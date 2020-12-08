@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
-import java.math.BigDecimal;
-import java.util.Locale;
 
 @Entity
 @Getter
@@ -16,9 +14,7 @@ import java.util.Locale;
 @AllArgsConstructor
 public class CurrencyDto {
 
-    private Long id;
-    private String from;
-    private String to;
-    private BigDecimal amount;
-    private Locale locale;
+   private String usd;
+   private String euro;
+   private String pln;
 }

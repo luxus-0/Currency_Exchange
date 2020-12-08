@@ -15,9 +15,9 @@ public class CurrencyService {
 
     public CurrencyDto getCurrency()
     {
-        String response = currencyClient.getCurrencyForUsd("USD");
+        CurrencyDto response = currencyClient.getCurrencyForUsd("USD");
         log.info(response);
-        return null;
+        return response;
     }
 
 }
