@@ -9,8 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CurrencyExchangeApplication {
 
 	public static void main(String[] args) {
-		CurrencyClient client = new CurrencyClient();
-		client.getCurrencyForUsd("USD");
 		SpringApplication.run(CurrencyExchangeApplication.class, args);
 	}
 
