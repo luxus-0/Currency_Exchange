@@ -2,8 +2,6 @@ package Currency.webclient.currency;
 
 import Currency.builder.CurrencyBuilder;
 import Currency.model.CurrencyDto;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
