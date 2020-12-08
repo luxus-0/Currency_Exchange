@@ -1,17 +1,12 @@
 package Currency.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Entity;
-
-@Entity
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
+
 public class CurrencyDto {
 
    private String usd;
