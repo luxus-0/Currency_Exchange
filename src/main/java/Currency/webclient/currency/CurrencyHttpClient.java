@@ -41,6 +41,6 @@ public class CurrencyHttpClient {
 
         HttpResponse<String> response = client2.send(request2, HttpResponse.BodyHandlers.ofString());
         log.info("Convert from Euro to GBP");
-        log.info(response.body());
+        log.info(response.toString());
     }
 }
