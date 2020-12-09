@@ -1,6 +1,7 @@
 package Currency.webclient.currency;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -30,9 +31,16 @@ public class CurrencyHttpClient {
         log.info(response.body());
     }
 
+    @Scheduled(fixedRate = 6000)
+    public void getCurrencyConversion() throws IOException, InterruptedException {
+        HttpClient client2 = HttpClient.newHttpClient();
+        HttpRequest request2 = HttpRequest
+                .newBuilder()
+                .uri(URI.create(URL + API_KEY + "/pair/EUR/GBP"))
+                .build();
 
-    public static void main(String args[]) throws Exception {
-        CurrencyHttpClient client = new CurrencyHttpClient();
-        client.getCurrency();
+        HttpResponse<String> response = client2.send(request2, HttpResponse.BodyHandlers.ofString());
+        log.info("Convert from Euro to GBP");
+        log.info(response.body());
     }
 }
