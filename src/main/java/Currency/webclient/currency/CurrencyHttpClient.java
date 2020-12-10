@@ -1,6 +1,10 @@
 package Currency.webclient.currency;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 import lombok.extern.log4j.Log4j2;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -46,8 +50,7 @@ public class CurrencyHttpClient {
     }
 
     @Scheduled(fixedRate = 6000)
-    public void getDateCurrency()
-    {
+    public void getDateCurrency() throws JsonProcessingException {
         if(getUrlDateCurrency().isEmpty())
         {
             log.info("Currency date is empty");
@@ -55,13 +58,12 @@ public class CurrencyHttpClient {
         else
         {
             getDate();
-            JSONObject currencyDate = new JSONObject(getUrlDateCurrency().indexOf(""));
-            JSONObject currencyDate2 = new JSONObject(getDate());
+            JSONObject currencyDate = new JSONObject(getUrlDateCurrency().indexOf(0));
+            JSONObject currencyDate2 = new JSONObject(getDate().indexOf(""));
 
-            if(currencyDate.equals(currencyDate2))
-            {
-                log.info("Currency date: " +currencyDate +"Currency date 2:"+ currencyDate2);
-            }
+
+            log.info(currencyDate.getString("2020-12-05"));
+            log.info(currencyDate2.getString("2020-11-08"));
 
 
         }
@@ -117,7 +119,7 @@ public class CurrencyHttpClient {
 
         return new ArrayList<>(List.of(
                 LocalDate.now()
-                , LocalDate.of(2020, 12, 11)
+                , LocalDate.of(2020, 12, 5)
                 , LocalDate.of(2020, 11, 9)
                 , LocalDate.of(2020, 12, 1)
         )).toString();
