@@ -16,9 +16,5 @@ public class AccessKey {
         return "access_key=c3a793be6c037bb9b765cbd61037d4a0";
     }
 
-    public String getUrlKey()
-    {
-        return client.getUrl()+getKey();
-    }
 
 }
