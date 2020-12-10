@@ -10,6 +10,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -42,6 +46,29 @@ public class CurrencyHttpClient {
     }
 
     @Scheduled(fixedRate = 6000)
+    public void getDateCurrency()
+    {
+        if(getUrlDateCurrency().isEmpty())
+        {
+            log.info("Currency date is empty");
+        }
+        else
+        {
+            List<LocalDate> date = List.of(
+                    LocalDate.now()
+                    ,LocalDate.of(2020,12,11)
+                    ,LocalDate.of(2020,11,9)
+                    ,LocalDate.of(2020,12,1)
+                    ).stream().filter(p -> p.getYear() == 2020).collect(Collectors.toList());
+
+            JSONObject object = new JSONObject(getUrlDateCurrency());
+            String dateCurrency = object.getString(date.toString());
+            log.info(dateCurrency);
+
+        }
+    }
+
+    @Scheduled(fixedRate = 6000)
     public void convertFromEuroToGbp() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
@@ -68,12 +95,17 @@ public class CurrencyHttpClient {
 
     public String getUrlLiveCurrency()
     {
-        return "http://api.currencylayer.com/live?";
+        return getUrl() +"live?";
     }
 
     public String getUrlConverter()
     {
         return "/convert?from=EUR&to=GBP";
+    }
+
+    public String getUrlDateCurrency()
+    {
+        return getUrl() +"historical?"+ getKey()+"/date=YYYY-MM-DD";
     }
 
     public String getKey()
