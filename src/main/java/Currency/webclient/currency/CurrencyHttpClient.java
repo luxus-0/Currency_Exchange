@@ -16,10 +16,9 @@ import java.net.http.HttpResponse;
 
 @Component
 @Log4j2
-@RequiredArgsConstructor
 public class CurrencyHttpClient {
 
-    private final AccessKey key;
+    private AccessKey key;
 
     @Scheduled(fixedRate = 6000)
     public void getCurrency() throws IOException, InterruptedException {
