@@ -11,7 +11,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDate;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,16 +54,15 @@ public class CurrencyHttpClient {
         }
         else
         {
-            List<LocalDate> date = List.of(
-                    LocalDate.now()
-                    ,LocalDate.of(2020,12,11)
-                    ,LocalDate.of(2020,11,9)
-                    ,LocalDate.of(2020,12,1)
-                    ).stream().filter(p -> p.getYear() == 2020).collect(Collectors.toList());
+            getDate();
+            JSONObject currencyDate = new JSONObject(getUrlDateCurrency().indexOf(""));
+            JSONObject currencyDate2 = new JSONObject(getDate());
 
-            JSONObject object = new JSONObject(getUrlDateCurrency());
-            String dateCurrency = object.getString("{YYYY-MM-DD}");
-            log.info(dateCurrency);
+            if(currencyDate.equals(currencyDate2))
+            {
+                log.info("Currency date: " +currencyDate +"Currency date 2:"+ currencyDate2);
+            }
+
 
         }
     }
@@ -105,7 +104,7 @@ public class CurrencyHttpClient {
 
     public String getUrlDateCurrency()
     {
-        return getUrl() +"historical?"+ getKey()+"/date=YYYY-MM-DD";
+        return getUrl() +"historical?"+ getKey()+"/date="+getDate();
     }
 
     public String getKey()
@@ -113,4 +112,14 @@ public class CurrencyHttpClient {
         return "access_key=c3a793be6c037bb9b765cbd61037d4a0";
     }
 
+    public String getDate()
+    {
+
+        return new ArrayList<>(List.of(
+                LocalDate.now()
+                , LocalDate.of(2020, 12, 11)
+                , LocalDate.of(2020, 11, 9)
+                , LocalDate.of(2020, 12, 1)
+        )).toString();
+    }
 }
