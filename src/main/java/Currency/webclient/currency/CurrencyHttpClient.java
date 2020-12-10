@@ -1,6 +1,7 @@
 package Currency.webclient.currency;
 
 import Currency.model.AccessKey;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -14,13 +15,10 @@ import java.net.http.HttpResponse;
 
 @Component
 @Log4j2
+@AllArgsConstructor
 public class CurrencyHttpClient {
 
     private final AccessKey key;
-
-    public CurrencyHttpClient(AccessKey key) {
-        this.key = key;
-    }
 
     @Scheduled(fixedRate = 6000)
     public void getCurrency() throws IOException, InterruptedException {

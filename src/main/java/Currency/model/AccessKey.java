@@ -1,14 +1,14 @@
 package Currency.model;
 
-import Currency.webclient.currency.CurrencyHttpClient;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
+@Builder
 public class AccessKey {
 
-    private final CurrencyHttpClient client;
     private final String key;
 
     public String getKey()
