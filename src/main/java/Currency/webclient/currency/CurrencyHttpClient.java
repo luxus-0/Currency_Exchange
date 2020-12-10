@@ -58,9 +58,8 @@ public class CurrencyHttpClient {
         else
         {
             getDate();
-            JSONObject currencyDate = new JSONObject(getUrlDateCurrency().indexOf(0));
+            JSONObject currencyDate = new JSONObject(getUrlDateCurrency().indexOf(""));
             JSONObject currencyDate2 = new JSONObject(getDate().indexOf(""));
-
 
             log.info(currencyDate.getString("2020-12-05"));
             log.info(currencyDate2.getString("2020-11-08"));
