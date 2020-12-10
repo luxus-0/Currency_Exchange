@@ -62,7 +62,7 @@ public class CurrencyHttpClient {
                     ).stream().filter(p -> p.getYear() == 2020).collect(Collectors.toList());
 
             JSONObject object = new JSONObject(getUrlDateCurrency());
-            String dateCurrency = object.getString(date.toString());
+            String dateCurrency = object.getString("{YYYY-MM-DD}");
             log.info(dateCurrency);
 
         }
