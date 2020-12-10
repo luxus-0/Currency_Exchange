@@ -1,5 +1,7 @@
 package Currency.webclient.currency;
 
+import Currency.model.AccessKey;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,14 +16,17 @@ import java.net.http.HttpResponse;
 
 @Component
 @Log4j2
+@RequiredArgsConstructor
 public class CurrencyHttpClient {
+
+    private final AccessKey key;
 
     @Scheduled(fixedRate = 6000)
     public void getCurrency() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(getUrl()))
+                .uri(URI.create(getUrlLiveCurrency() +key.getKey()))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -34,12 +39,12 @@ public class CurrencyHttpClient {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(getUrlLiveCurrency() +  + "&format=1"))
+                .uri(URI.create(getUrlLiveCurrency() + key.getKey() + "&format=1"))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         JSONObject jsonObject = new JSONObject(response.body());
-        log.info("Currency: " +jsonObject);
+        log.info("Base Currency: " +jsonObject);
     }
 
     @Scheduled(fixedRate = 6000)
@@ -47,7 +52,7 @@ public class CurrencyHttpClient {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(getUrl() + getConvertUrl() + "&format=1"))
+                .uri(URI.create(getUrl() + getUrlConverter() + "&format=1"))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -72,7 +77,7 @@ public class CurrencyHttpClient {
         return "http://api.currencylayer.com/live?";
     }
 
-    public String getConvertUrl()
+    public String getUrlConverter()
     {
         return "/convert?from=EUR&to=GBP";
     }
