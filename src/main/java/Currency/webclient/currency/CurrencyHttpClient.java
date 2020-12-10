@@ -58,12 +58,14 @@ public class CurrencyHttpClient {
         else
         {
             getDate();
-            JSONObject currencyDate = new JSONObject(getUrlDateCurrency().indexOf(""));
-            JSONObject currencyDate2 = new JSONObject(getDate().indexOf(""));
 
-            log.info(currencyDate.getString("2020-12-05"));
-            log.info(currencyDate2.getString("2020-11-08"));
+            for(int i = 0; i < 100;i++) {
+                JSONObject currencyDate = new JSONObject(getUrlDateCurrency().indexOf(i));
+                JSONObject currencyDate2 = new JSONObject(getDate().indexOf(i));
 
+                log.info(currencyDate);
+                log.info(currencyDate2);
+            }
 
         }
     }
@@ -105,7 +107,7 @@ public class CurrencyHttpClient {
 
     public String getUrlDateCurrency()
     {
-        return getUrl() +"historical?"+ getKey()+"/date="+getDate();
+        return getUrl() +"historical?"+ getKey()+"/date=2020-12-05";
     }
 
     public String getKey()
