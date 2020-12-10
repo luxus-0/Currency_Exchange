@@ -1,7 +1,8 @@
 package Currency.webclient.currency;
 
 import lombok.extern.log4j.Log4j2;
-import org.springframework.scheduling.annotation.EnableScheduling;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -15,37 +16,64 @@ import java.net.http.HttpResponse;
 @Log4j2
 public class CurrencyHttpClient {
 
-    private final static String URL = "https://v6.exchangerate-api.com/v6/";
-    private final static String API_KEY = "8adf6a6ff3e821e7c8abc2aa";
-
     @Scheduled(fixedRate = 6000)
     public void getCurrency() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(URL + API_KEY + "/latest/USD"))
+                .uri(URI.create(getUrl() + getApiKey()))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        log.info("Currencies");
-        log.info(response.body());
+        JSONObject jsonObject = new JSONObject(response.body());
+        log.info("Currency: " +jsonObject);
     }
 
     @Scheduled(fixedRate = 6000)
-    public void getCurrencyConversion() throws IOException, InterruptedException {
-        HttpClient client2 = HttpClient.newHttpClient();
-        HttpRequest request2 = HttpRequest
+    public void getBaseCurrency() throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(URL + API_KEY + "/pair/EUR/GBP"))
+                .uri(URI.create(getUrl() + getApiKey() + "&format=1"))
                 .build();
 
-        HttpResponse<String> response = client2.send(request2, HttpResponse.BodyHandlers.ofString());
-        log.info("Convert from Euro to GBP");
-        log.info(response.body());
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        JSONArray jsonObject = new JSONArray(response.body());
+        log.info("Currency: " +jsonObject);
     }
 
-    public void addCurency()
-    {
+    @Scheduled(fixedRate = 6000)
+    public void convertFromEuroToGbp() throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest
+                .newBuilder()
+                .uri(URI.create(getUrl() + getConvertUrl() + getApiKey() + "&format=1"))
+                .build();
 
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        JSONObject jsonObject = new JSONObject(response.body());
+        if(jsonObject.isEmpty())
+        {
+            log.info("Empty currency convertion ");
+        }
+        else
+        {
+            log.info(jsonObject);
+        }
+    }
+
+
+    public String getUrl()
+    {
+        return "http://api.currencylayer.com/live?access_key=";
+    }
+
+    public String getConvertUrl()
+    {
+        return "/convert?from=EUR&to=GBP/access_key=";
+    }
+
+    private String getApiKey() {
+        return "c3a793be6c037bb9b765cbd61037d4a0";
     }
 }
