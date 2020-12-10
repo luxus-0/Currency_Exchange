@@ -21,7 +21,7 @@ public class CurrencyHttpClient {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(getUrl() + getApiKey()))
+                .uri(URI.create(getUrl()))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -34,11 +34,11 @@ public class CurrencyHttpClient {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(getUrl() + getApiKey() + "&format=1"))
+                .uri(URI.create(getUrlLiveCurrency() +  + "&format=1"))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        JSONArray jsonObject = new JSONArray(response.body());
+        JSONObject jsonObject = new JSONObject(response.body());
         log.info("Currency: " +jsonObject);
     }
 
@@ -47,7 +47,7 @@ public class CurrencyHttpClient {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(getUrl() + getConvertUrl() + getApiKey() + "&format=1"))
+                .uri(URI.create(getUrl() + getConvertUrl() + "&format=1"))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -62,18 +62,20 @@ public class CurrencyHttpClient {
         }
     }
 
-
     public String getUrl()
     {
-        return "http://api.currencylayer.com/live?access_key=";
+        return "http://api.currencylayer.com/";
+    }
+
+    public String getUrlLiveCurrency()
+    {
+        return "http://api.currencylayer.com/live?";
     }
 
     public String getConvertUrl()
     {
-        return "/convert?from=EUR&to=GBP/access_key=";
+        return "/convert?from=EUR&to=GBP";
     }
 
-    private String getApiKey() {
-        return "c3a793be6c037bb9b765cbd61037d4a0";
-    }
+
 }
