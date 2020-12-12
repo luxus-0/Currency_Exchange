@@ -26,17 +26,17 @@ public class CurrencyController {
     }
 
     @GetMapping("/currencies/v2")
-    public void getCurrency() throws IOException, InterruptedException {
+    public void getCurrency() throws Exception {
         currencyHttpClient.getAllCurrency();
     }
 
     @GetMapping("/currencies/base")
-    public void getLiveCurrency() throws IOException, InterruptedException {
+    public void getLiveCurrency() throws Exception {
         currencyHttpClient.getBaseCurrency();
     }
 
     @GetMapping("/currencies/date")
-    public void getDateCurrency() throws JsonProcessingException {
+    public void getDateCurrency() {
         currencyHttpClient.getDateCurrency();
     }
 
@@ -59,12 +59,12 @@ public class CurrencyController {
     }
 
     @GetMapping("/currencies/convert/euro/gbp")
-    public void convertFromEuroToGbp() throws IOException, InterruptedException {
+    public void convertFromEuroToGbp() throws Exception {
         currencyHttpClient.convertFromEuroToGbp();
     }
 
     @GetMapping("/currencies/convert/euro/pln")
-    public void convertFromEuroToPln(@PathVariable String amount) throws IOException, InterruptedException {
+    public void convertFromEuroToPln(@PathVariable String amount) throws Exception {
         currencyHttpClient.convertFromEuroToPln(amount);
     }
 
