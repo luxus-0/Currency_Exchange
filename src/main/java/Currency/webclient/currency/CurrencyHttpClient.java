@@ -1,14 +1,10 @@
 package Currency.webclient.currency;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 import lombok.extern.log4j.Log4j2;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -17,14 +13,13 @@ import java.net.http.HttpResponse;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Log4j2
 public class CurrencyHttpClient {
 
     @Scheduled(fixedRate = 6000)
-    public void getCurrency() throws IOException, InterruptedException {
+    public void getAllCurrency() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
@@ -59,7 +54,7 @@ public class CurrencyHttpClient {
         {
             getDate();
 
-            for(int i = 0; i < 100;i++) {
+            for(int i = 0; i < 20;i++) {
                 JSONObject currencyDate = new JSONObject(getUrlDateCurrency().indexOf(i));
                 JSONObject currencyDate2 = new JSONObject(getDate().indexOf(i));
 
@@ -112,7 +107,7 @@ public class CurrencyHttpClient {
 
     public String getKey()
     {
-        return "access_key=c3a793be6c037bb9b765cbd61037d4a0";
+        return "access_key=07f5f38393ee1ada9be581377906ffca";
     }
 
     public String getDate()
