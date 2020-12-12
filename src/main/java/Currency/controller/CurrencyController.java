@@ -31,8 +31,6 @@ public class CurrencyController {
         currencyHttpClient.getAllCurrency();
     }
 
-
-
     @GetMapping("/currencies/base")
     public void getLiveCurrency() throws IOException, InterruptedException {
         currencyHttpClient.getBaseCurrency();
