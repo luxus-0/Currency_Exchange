@@ -63,4 +63,9 @@ public class CurrencyController {
         currencyHttpClient.convertFromEuroToGbp();
     }
 
+    @GetMapping("/currencies/convert/euro/pln")
+    public void convertFromEuroToPln(@PathVariable String amount) throws IOException, InterruptedException {
+        currencyHttpClient.convertFromEuroToPln(amount);
+    }
+
 }

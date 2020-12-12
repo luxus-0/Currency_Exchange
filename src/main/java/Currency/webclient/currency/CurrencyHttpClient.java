@@ -1,5 +1,6 @@
 package Currency.webclient.currency;
 
+import Currency.exception.CurrencyConvertExceptionNotFound;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;
@@ -70,7 +71,7 @@ public class CurrencyHttpClient {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(getUrlLiveCurrency() + getKey() + getUrlConverter() + "&format=1"))
+                .uri(URI.create(getUrlLiveCurrency() + getKey() +"/convert?from=EUR&to=GBP" + "&format=1"))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -78,6 +79,25 @@ public class CurrencyHttpClient {
         if(jsonObject.isEmpty())
         {
             log.info("Empty currency convertion ");
+        }
+        else
+        {
+            log.info(jsonObject);
+        }
+    }
+
+    public void convertFromEuroToPln(String amount) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest
+                .newBuilder()
+                .uri(URI.create(getUrlLiveCurrency() + getKey() + "/convert?from=EUR&to=GBP" + "&format=1" + "&amount={amount}"))
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        JSONObject jsonObject = new JSONObject(response.body());
+        if(jsonObject.isEmpty())
+        {
+            throw new CurrencyConvertExceptionNotFound("Currency converter not found");
         }
         else
         {
