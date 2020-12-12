@@ -67,7 +67,7 @@ public class CurrencyHttpClient {
     }
 
     @Scheduled(fixedRate = 6000)
-    public void convertFromEuroToGbp(String amount) throws Exception {
+    public void convertFromEuroToGbp(Float amount) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
@@ -86,7 +86,7 @@ public class CurrencyHttpClient {
         }
     }
 
-    public void convertFromEuroToPln(String amount) throws Exception {
+    public void convertFromEuroToPln(Float amount) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()

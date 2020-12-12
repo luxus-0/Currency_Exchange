@@ -58,13 +58,13 @@ public class CurrencyController {
         return currencyClient.getCurrencyForPln(pln);
     }
 
-    @GetMapping("/currencies/convert/euro/gbp")
-    public void convertFromEuroToGbp() throws Exception {
-        currencyHttpClient.convertFromEuroToGbp();
+    @GetMapping("/currencies/convert/euro/gbp/amount={amount}")
+    public void convertFromEuroToGbp(@PathVariable Float amount) throws Exception {
+        currencyHttpClient.convertFromEuroToGbp(amount);
     }
 
-    @GetMapping("/currencies/convert/euro/pln")
-    public void convertFromEuroToPln(@PathVariable String amount) throws Exception {
+    @GetMapping("/currencies/convert/euro/pln/amount={amount}")
+    public void convertFromEuroToPln(@PathVariable Float amount) throws Exception {
         currencyHttpClient.convertFromEuroToPln(amount);
     }
 
