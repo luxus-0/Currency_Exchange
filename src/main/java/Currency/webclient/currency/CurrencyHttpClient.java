@@ -67,11 +67,11 @@ public class CurrencyHttpClient {
     }
 
     @Scheduled(fixedRate = 6000)
-    public void convertFromEuroToGbp() throws Exception {
+    public void convertFromEuroToGbp(String amount) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(getUrlLiveCurrency() + getKey() +"/convert?from=EUR&to=GBP" + "&format=1"))
+                .uri(URI.create(getUrlLiveCurrency() + getKey() +"/convert?from=EUR&to=GBP" + "&format=1" + "&amount={amount}"))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
