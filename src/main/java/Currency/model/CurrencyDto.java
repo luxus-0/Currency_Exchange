@@ -12,4 +12,5 @@ public class CurrencyDto {
    private String usd;
    private String euro;
    private String pln;
+   private float amount;
 }

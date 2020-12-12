@@ -20,7 +20,7 @@ import java.util.List;
 public class CurrencyHttpClient {
 
     @Scheduled(fixedRate = 6000)
-    public void getAllCurrency() throws IOException, InterruptedException {
+    public void getAllCurrency() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
@@ -33,7 +33,7 @@ public class CurrencyHttpClient {
     }
 
     @Scheduled(fixedRate = 6000)
-    public void getBaseCurrency() throws IOException, InterruptedException {
+    public void getBaseCurrency() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
@@ -46,7 +46,7 @@ public class CurrencyHttpClient {
     }
 
     @Scheduled(fixedRate = 6000)
-    public void getDateCurrency() throws JsonProcessingException {
+    public void getDateCurrency() {
         if(getUrlDateCurrency().isEmpty())
         {
             log.info("Currency date is empty");
@@ -67,7 +67,7 @@ public class CurrencyHttpClient {
     }
 
     @Scheduled(fixedRate = 6000)
-    public void convertFromEuroToGbp() throws IOException, InterruptedException {
+    public void convertFromEuroToGbp() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
@@ -86,7 +86,7 @@ public class CurrencyHttpClient {
         }
     }
 
-    public void convertFromEuroToPln(String amount) throws IOException, InterruptedException {
+    public void convertFromEuroToPln(String amount) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
