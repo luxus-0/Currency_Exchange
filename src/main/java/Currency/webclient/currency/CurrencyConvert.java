@@ -1,6 +1,7 @@
 package Currency.webclient.currency;
 
 import Currency.exception.CurrencyConvertExceptionNotFound;
+import Currency.model.CurrencyConverterDto;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,7 +19,7 @@ public class CurrencyConvert {
     private CurrencyHttpClient httpClient;
 
     @Scheduled(fixedRate = 9000)
-    public void convert(String from,String to,Float amount) throws Exception {
+    public CurrencyConverterDto convert(String from, String to, Float amount) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
@@ -35,5 +36,7 @@ public class CurrencyConvert {
         {
             log.info(jsonObject);
         }
+
+        return null;
     }
 }

@@ -31,7 +31,7 @@ public class CurrencyHttpClient {
     }
 
     @Scheduled(fixedRate = 7000)
-    public void getBaseCurrency() throws Exception {
+    public void getLiveCurrency() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()

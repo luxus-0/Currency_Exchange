@@ -16,7 +16,7 @@ public class CurrencyController {
 
     private final CurrencyClient currencyClient;
     private final CurrencyHttpClient currencyHttpClient;
-    private final CurrencyConvert convert;
+    private final CurrencyConvert currencyConvert;
 
     private final CurrencyService service;
 
@@ -31,9 +31,9 @@ public class CurrencyController {
         currencyHttpClient.getAllCurrency();
     }
 
-    @GetMapping("/currencies/base")
+    @GetMapping("/currencies/live")
     public void getLiveCurrency() throws Exception {
-        currencyHttpClient.getBaseCurrency();
+        currencyHttpClient.getLiveCurrency();
     }
 
     @GetMapping("/currencies/date")
@@ -41,32 +41,27 @@ public class CurrencyController {
         currencyHttpClient.getDateCurrency();
     }
 
-    @GetMapping("/currencies/usd/{usd}")
+    @GetMapping("/currencies/{usd}")
     public CurrencyDto getCurrencyUsd(@PathVariable String usd)
     {
         return currencyClient.getCurrencyForUsd(usd);
     }
 
-    @GetMapping("/currencies/euro/{euro}")
+    @GetMapping("/currencies/{euro}")
     public CurrencyDto getCurrencyEuro(@PathVariable String euro)
     {
         return currencyClient.getCurrencyForEuro(euro);
     }
 
-    @GetMapping("/currencies/pln/{pln}")
+    @GetMapping("/currencies/{pln}")
     public CurrencyDto getCurrencyPln(@PathVariable String pln)
     {
         return currencyClient.getCurrencyForPln(pln);
     }
 
-    @GetMapping("/currencies/convert/euro/gbp/amount={amount}")
-    public void convertFromEuroToGbp(@PathVariable Float amount) throws Exception {
-        convert.fromEuroToGbp(amount);
-    }
-
-    @GetMapping("/currencies/convert/euro/pln/amount={amount}")
-    public void convertFromEuroToPln(@PathVariable Float amount) throws Exception {
-        convert.fromEuroToPln(amount);
+    @GetMapping("/currencies/convert/from/{from}/to/{to}/amount/{amount}")
+    public void convertFromTo(@PathVariable String from,@PathVariable String to,@PathVariable Float amount) throws Exception {
+        currencyConvert.convert(from, to, amount);
     }
 
 }
