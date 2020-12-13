@@ -1,24 +1,28 @@
 package Currency.webclient.currency;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-@Component
-@AllArgsConstructor
+@Service
 @Log4j2
+@AllArgsConstructor
+@NoArgsConstructor
 public class CurrencyScheduled {
 
-    private final CurrencyUrl url;
+    private CurrencyUrl url;
 
-    @Scheduled(fixedRate = 6000)
+
     public void getAllCurrency() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
@@ -31,7 +35,6 @@ public class CurrencyScheduled {
         log.info("Currency: " +jsonObject);
     }
 
-    @Scheduled(fixedRate = 6000)
     public void getLiveCurrency() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest

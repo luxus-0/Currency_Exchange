@@ -1,11 +1,11 @@
 package Currency.webclient.currency;
 
+import lombok.Getter;
+
+
+@Getter
 public class CurrencyUrl {
 
-    private String url;
-    private String urlLiveCurrency;
-    private String urlDateCurrency;
-    private String key;
 
     public String getUrl()
     {
