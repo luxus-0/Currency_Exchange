@@ -16,11 +16,13 @@ public class CurrencyClient {
     private static final String CURRENCY_URL = "http://api.currencylayer.com/";
     private static final String ACCESS_KEY = "c3a793be6c037bb9b765cbd61037d4a0";
 
-    public CurrencyDto getSourceCurrency(Float amount, String source)
+    public CurrencyDto getSourceCurrency(String source,Float amount)
     {
        CurrencyDto currencyDto =  callUsd("live?access_key={accessKey}&format=1&source={source}",
                 CurrencyDto.class,
                 ACCESS_KEY,source);
+
+        currencyDto.setAmount(amount);
 
        if(source.equals("USD") || source.equals("EUR") || source.equals("PLN") && amount > 0) {
 
