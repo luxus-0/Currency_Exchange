@@ -17,30 +17,20 @@ public class CurrencyClient {
     private static final String CURRENCY_URL = "http://api.currencylayer.com/";
     private static final String ACCESS_KEY = "c3a793be6c037bb9b765cbd61037d4a0";
 
-    public CurrencyDto getCurrencyForUsd(String usd)
+    public CurrencyDto getSourceCurrency(String source)
     {
        CurrencyDto currencyDto =  callUsd("live?access_key={accessKey}&format=1&source={source}",
                 CurrencyDto.class,
-                ACCESS_KEY,usd);
+                ACCESS_KEY,source);
 
-        return creator.buildCurrencyUsd(currencyDto);
+        creator.buildCurrencyUsd(currencyDto);
+        creator.buildCurrencyEuro(currencyDto);
+        creator.buildCurrencyPln(currencyDto);
+
+        return currencyDto;
     }
 
-    public CurrencyDto getCurrencyForPln(String pln) {
-        CurrencyDto currencyPlnDto =  callUsd("live?access_key={accessKey}&format=1&source={source}",
-                CurrencyDto.class,
-                ACCESS_KEY,pln);
 
-        return creator.buildCurrencyPln(currencyPlnDto);
-    }
-
-    public CurrencyDto getCurrencyForEuro(String euro) {
-        CurrencyDto currencyEuroDto =  callUsd("live?access_key={accessKey}&format=1&source={source}",
-                CurrencyDto.class,
-                ACCESS_KEY,euro);
-
-        return creator.buildCurrencyEuro(currencyEuroDto);
-    }
 
     public <T> T callUsd(String url, Class<T> reponseType, Object...objects) {
         return restTemplate.getForObject(CURRENCY_URL + url

@@ -35,22 +35,10 @@ public class CurrencyController {
         currencyScheduled.getLiveCurrency();
     }
 
-    @GetMapping("/currencies/usd/{usd}")
-    public CurrencyDto getCurrencyUsd(@PathVariable String usd)
+    @GetMapping("/currencies/source")
+    public CurrencyDto getSource(@PathVariable String source)
     {
-        return currencyClient.getCurrencyForUsd(usd);
-    }
-
-    @GetMapping("/currencies/euro/{euro}")
-    public CurrencyDto getCurrencyEuro(@PathVariable String euro)
-    {
-        return currencyClient.getCurrencyForEuro(euro);
-    }
-
-    @GetMapping("/currencies/pln/{pln}")
-    public CurrencyDto getCurrencyPln(@PathVariable String pln)
-    {
-        return currencyClient.getCurrencyForPln(pln);
+        return currencyClient.getCurrencyForUsd(source);
     }
 
     @GetMapping("/currencies/date/{date}")
