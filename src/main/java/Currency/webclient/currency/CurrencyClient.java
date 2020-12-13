@@ -30,8 +30,6 @@ public class CurrencyClient {
         return currencyDto;
     }
 
-
-
     public <T> T callUsd(String url, Class<T> reponseType, Object...objects) {
         return restTemplate.getForObject(CURRENCY_URL + url
                 , reponseType, objects);
