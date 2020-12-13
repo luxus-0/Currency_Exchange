@@ -13,9 +13,18 @@ public class CurrencyService {
 
     private final CurrencyClient currencyClient;
 
-    public CurrencyDto getCurrency()
+    public CurrencyDto getUsd()
     {
-        return currencyClient.getCurrencyForUsd("USD");
+        return currencyClient.getCurrencyForUsd("Usd");
     }
 
+    public CurrencyDto getPln()
+    {
+        return currencyClient.getCurrencyForPln("Pln");
+    }
+
+    public CurrencyDto getEur()
+    {
+        return currencyClient.getCurrencyForEuro("Euro");
+    }
 }
