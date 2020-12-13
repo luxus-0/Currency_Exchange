@@ -22,7 +22,6 @@ public class CurrencyController {
     private final CurrencyScheduled currencyScheduled;
     private final CurrencyDate currencyDate;
     private final CurrencyConvert currency;
-
     private final CurrencyService service;
 
     @GetMapping("/currencies/v1")
@@ -41,27 +40,28 @@ public class CurrencyController {
         currencyScheduled.getLiveCurrency();
     }
 
-    @GetMapping("/currencies/date")
-    public void getDateCurrency(@PathVariable LocalDate date) {
-        currencyDate.getDateCurrency(date);
-    }
-
-    @GetMapping("/currencies/{usd}")
+    @GetMapping("/currencies/usd/{usd}")
     public CurrencyDto getCurrencyUsd(@PathVariable String usd)
     {
         return currencyClient.getCurrencyForUsd(usd);
     }
 
-    @GetMapping("/currencies/{euro}")
+    @GetMapping("/currencies/euro/{euro}")
     public CurrencyDto getCurrencyEuro(@PathVariable String euro)
     {
         return currencyClient.getCurrencyForEuro(euro);
     }
 
-    @GetMapping("/currencies/{pln}")
+    @GetMapping("/currencies/pln/{pln}")
     public CurrencyDto getCurrencyPln(@PathVariable String pln)
     {
         return currencyClient.getCurrencyForPln(pln);
+    }
+
+    @GetMapping("/currencies/date/{date}")
+    public void getCurrencyDate(@PathVariable LocalDate date)
+    {
+        currencyDate.getDateCurrency(date);
     }
 
     @GetMapping("/currencies/convert/from/{from}/to/{to}/amount/{amount}")
