@@ -5,18 +5,22 @@ import Currency.model.CurrencyDto;
 import Currency.service.CurrencyService;
 import Currency.webclient.currency.CurrencyClient;
 import Currency.webclient.currency.CurrencyConvert;
-import Currency.webclient.currency.CurrencyHttpClient;
+import Currency.webclient.currency.CurrencyDate;
+import Currency.webclient.currency.CurrencyScheduled;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDate;
 
 @RestController
 @AllArgsConstructor
 public class CurrencyController {
 
     private final CurrencyClient currencyClient;
-    private final CurrencyHttpClient currencyHttpClient;
+    private final CurrencyScheduled currencyScheduled;
+    private final CurrencyDate currencyDate;
     private final CurrencyConvert currency;
 
     private final CurrencyService service;
@@ -29,17 +33,17 @@ public class CurrencyController {
 
     @GetMapping("/currencies/v2")
     public void getCurrency() throws Exception {
-        currencyHttpClient.getAllCurrency();
+        currencyScheduled.getAllCurrency();
     }
 
     @GetMapping("/currencies/live")
     public void getLiveCurrency() throws Exception {
-        currencyHttpClient.getLiveCurrency();
+        currencyScheduled.getLiveCurrency();
     }
 
     @GetMapping("/currencies/date")
-    public void getDateCurrency() {
-        currencyHttpClient.getDateCurrency();
+    public void getDateCurrency(@PathVariable LocalDate date) {
+        currencyDate.getDateCurrency(date);
     }
 
     @GetMapping("/currencies/{usd}")
