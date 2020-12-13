@@ -3,7 +3,6 @@ package Currency.controller;
 import Currency.model.CurrencyConverterDto;
 import Currency.model.CurrencyDateDto;
 import Currency.model.CurrencyDto;
-import Currency.service.CurrencyService;
 import Currency.webclient.currency.CurrencyClient;
 import Currency.webclient.currency.CurrencyConvert;
 import Currency.webclient.currency.CurrencyDate;
@@ -23,7 +22,6 @@ public class CurrencyController {
     private final CurrencyScheduled currencyScheduled;
     private final CurrencyDate currencyDate;
     private final CurrencyConvert currency;
-    private final CurrencyService service;
 
     @GetMapping("/currencies")
     public void getCurrency() throws Exception {
@@ -35,10 +33,10 @@ public class CurrencyController {
         currencyScheduled.getLiveCurrency();
     }
 
-    @GetMapping("/currencies/source")
-    public CurrencyDto getSource(@PathVariable String source)
+    @GetMapping("/currencies/{amount}")
+    public CurrencyDto getSource(@PathVariable Float amount,@PathVariable String source)
     {
-        return currencyClient.getCurrencyForUsd(source);
+        return currencyClient.getSourceCurrency(amount,source);
     }
 
     @GetMapping("/currencies/date/{date}")
