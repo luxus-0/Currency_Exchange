@@ -37,6 +37,6 @@ public class CurrencyConvert {
             log.info(jsonObject);
         }
 
-        return null;
+        return convert(from, to, amount);
     }
 }
