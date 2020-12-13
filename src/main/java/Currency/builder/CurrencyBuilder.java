@@ -7,21 +7,21 @@ public class CurrencyBuilder {
     public CurrencyDto buildCurrencyPln(CurrencyDto currencyPlnDto)
     {
         return CurrencyDto.builder()
-                .usd(currencyPlnDto.getPln())
+                .pln("PLN")
                 .build();
     }
 
     public CurrencyDto buildCurrencyEuro(CurrencyDto currencyEuroDto)
     {
         return CurrencyDto.builder()
-                .usd(currencyEuroDto.getEuro())
+                .euro("EUR")
                 .build();
     }
 
     public CurrencyDto buildCurrencyUsd(CurrencyDto currencyUsdDto)
     {
         return CurrencyDto.builder()
-                .usd(currencyUsdDto.getUsd())
+                .usd("USD")
                 .build();
     }
 }

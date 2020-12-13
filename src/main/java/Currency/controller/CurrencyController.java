@@ -25,13 +25,7 @@ public class CurrencyController {
     private final CurrencyConvert currency;
     private final CurrencyService service;
 
-    @GetMapping("/currencies/v1")
-    public CurrencyDto getAllCurrency()
-    {
-        return service.getCurrency();
-    }
-
-    @GetMapping("/currencies/v2")
+    @GetMapping("/currencies")
     public void getCurrency() throws Exception {
         currencyScheduled.getAllCurrency();
     }
