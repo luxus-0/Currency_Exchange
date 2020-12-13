@@ -1,5 +1,6 @@
 package Currency.controller;
 
+import Currency.model.CurrencyConverterDto;
 import Currency.model.CurrencyDto;
 import Currency.service.CurrencyService;
 import Currency.webclient.currency.CurrencyClient;
@@ -16,7 +17,7 @@ public class CurrencyController {
 
     private final CurrencyClient currencyClient;
     private final CurrencyHttpClient currencyHttpClient;
-    private final CurrencyConvert currencyConvert;
+    private final CurrencyConvert currency;
 
     private final CurrencyService service;
 
@@ -60,8 +61,8 @@ public class CurrencyController {
     }
 
     @GetMapping("/currencies/convert/from/{from}/to/{to}/amount/{amount}")
-    public void convertFromTo(@PathVariable String from,@PathVariable String to,@PathVariable Float amount) throws Exception {
-        currencyConvert.convert(from, to, amount);
+    public CurrencyConverterDto convertCurrency(@PathVariable String from, @PathVariable String to, @PathVariable Float amount) throws Exception {
+        return currency.convert(from, to, amount);
     }
 
 }
