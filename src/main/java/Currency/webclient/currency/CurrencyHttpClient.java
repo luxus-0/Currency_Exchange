@@ -1,12 +1,10 @@
 package Currency.webclient.currency;
 
 import Currency.exception.CurrencyConvertExceptionNotFound;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -32,7 +30,7 @@ public class CurrencyHttpClient {
         log.info("Currency: " +jsonObject);
     }
 
-    @Scheduled(fixedRate = 6000)
+    @Scheduled(fixedRate = 7000)
     public void getBaseCurrency() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
@@ -45,7 +43,7 @@ public class CurrencyHttpClient {
         log.info("Base Currency: " +jsonObject);
     }
 
-    @Scheduled(fixedRate = 6000)
+    @Scheduled(fixedRate = 8000)
     public void getDateCurrency() {
         if(getUrlDateCurrency().isEmpty())
         {
@@ -55,7 +53,7 @@ public class CurrencyHttpClient {
         {
             getDate();
 
-            for(int i = 0; i < 20;i++) {
+            for(int i = 0; i < 3;i++) {
                 JSONObject currencyDate = new JSONObject(getUrlDateCurrency().indexOf(i));
                 JSONObject currencyDate2 = new JSONObject(getDate().indexOf(i));
 
@@ -66,44 +64,7 @@ public class CurrencyHttpClient {
         }
     }
 
-    @Scheduled(fixedRate = 6000)
-    public void convertFromEuroToGbp(Float amount) throws Exception {
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest
-                .newBuilder()
-                .uri(URI.create(getUrlLiveCurrency() + getKey() +"/convert?from=EUR&to=GBP" + "&format=1" + "&amount={amount}"))
-                .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        JSONObject jsonObject = new JSONObject(response.body());
-        if(jsonObject.isEmpty())
-        {
-            log.info("Empty currency convertion ");
-        }
-        else
-        {
-            log.info(jsonObject);
-        }
-    }
-
-    public void convertFromEuroToPln(Float amount) throws Exception {
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest
-                .newBuilder()
-                .uri(URI.create(getUrlLiveCurrency() + getKey() + "/convert?from=EUR&to=GBP" + "&format=1" + "&amount={amount}"))
-                .build();
-
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        JSONObject jsonObject = new JSONObject(response.body());
-        if(jsonObject.isEmpty())
-        {
-            throw new CurrencyConvertExceptionNotFound("Currency converter not found");
-        }
-        else
-        {
-            log.info(jsonObject);
-        }
-    }
 
     public String getUrl()
     {
@@ -115,19 +76,14 @@ public class CurrencyHttpClient {
         return getUrl() +"live?";
     }
 
-    public String getUrlConverter()
-    {
-        return "/convert?from=EUR&to=GBP";
-    }
-
     public String getUrlDateCurrency()
     {
-        return getUrl() +"historical?"+ getKey()+"/date=2020-12-05";
+        return getUrl() +"historical"+ getKey()+"/date=2020-12-05";
     }
 
     public String getKey()
     {
-        return "access_key=07f5f38393ee1ada9be581377906ffca";
+        return "?access_key=07f5f38393ee1ada9be581377906ffca";
     }
 
     public String getDate()
