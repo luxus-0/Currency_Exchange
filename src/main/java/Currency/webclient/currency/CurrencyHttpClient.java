@@ -1,10 +1,10 @@
 package Currency.webclient.currency;
 
-import Currency.exception.CurrencyConvertExceptionNotFound;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Component
 @Log4j2
 public class CurrencyHttpClient {
 
@@ -63,8 +63,6 @@ public class CurrencyHttpClient {
 
         }
     }
-
-
 
     public String getUrl()
     {
