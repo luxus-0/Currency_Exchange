@@ -1,6 +1,7 @@
 package Currency.controller;
 
 import Currency.model.CurrencyConverterDto;
+import Currency.model.CurrencyDateDto;
 import Currency.model.CurrencyDto;
 import Currency.service.CurrencyService;
 import Currency.webclient.currency.CurrencyClient;
@@ -59,9 +60,9 @@ public class CurrencyController {
     }
 
     @GetMapping("/currencies/date/{date}")
-    public void getCurrencyDate(@PathVariable LocalDate date)
+    public CurrencyDateDto getCurrencyDate(@PathVariable LocalDate date)
     {
-        currencyDate.getDateCurrency(date);
+        return currencyDate.getDateCurrency(date);
     }
 
     @GetMapping("/currencies/convert/from/{from}/to/{to}/amount/{amount}")
