@@ -2,7 +2,6 @@ package Currency.webclient.currency;
 
 import lombok.Getter;
 
-
 @Getter
 public class CurrencyUrl {
 
@@ -18,8 +17,6 @@ public class CurrencyUrl {
     {
         return getUrl() +"historical"+ getKey()+"/date={date}";
     }
-    public String getKey()
-    {
-        return "?access_key=07f5f38393ee1ada9be581377906ffca";
-    }
+    public String getUrlSourceAndAmountCurrency() { return getUrl() + getUrlDateCurrency() + getKey() + "&source={source}" +"&amount={amount}";}
+    public String getKey() { return "?access_key=07f5f38393ee1ada9be581377906ffca";}
 }
