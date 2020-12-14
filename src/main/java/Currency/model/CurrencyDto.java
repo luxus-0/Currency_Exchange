@@ -7,7 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-@Setter
+@Builder
+@AllArgsConstructor
 @Log4j2
 public class CurrencyDto {
 
@@ -22,6 +23,5 @@ public class CurrencyDto {
 
       currencies.stream().filter(p -> p.length() > 0)
               .findAny().orElseThrow();
-      log.info("Currencies");
    }
 }
