@@ -13,7 +13,7 @@ import java.util.Set;
 public class CurrencyDto {
 
    private final Set<String> currencies = new HashSet<>();
-   private float amount;
+   private Float amount;
    private String source;
 
    public CurrencyDto() {
@@ -24,7 +24,5 @@ public class CurrencyDto {
 
       currencies.stream().filter(p -> p.length() > 0)
               .findAny().orElseThrow();
-
-      log.info("Currencies");
    }
 }
