@@ -3,18 +3,16 @@ package Currency.webclient.currency;
 import Currency.exception.SourceCurrencyNotFoundException;
 import Currency.model.CurrencyDto;
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-import org.springframework.stereotype.Component;
+import lombok.extern.log4j.Log4j2;import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-@Component
+@Service
 @Log4j2
 @AllArgsConstructor
 public class CurrencyClient {
 
     private final RestTemplate restTemplate = new RestTemplate();
     private final CurrencyUrl currencyUrl;
-    private final CurrencyDtoCreator builderCurrency;
 
     public CurrencyDto getSourceCurrency(String source,Float amount)
     {
@@ -22,10 +20,13 @@ public class CurrencyClient {
                 CurrencyDto.class,
                 getAccessKey(),source,amount);
 
-       builderCurrency.createSourceCurrencies(source,amount);
-       if(source.equals("") && amount > 0) {
+       CurrencyDto currency = new CurrencyDto();
+       currency.setSource(source);
+       currency.setAmount(amount);
 
-           log.info("All Currencies: " +currencyDto.getCurrencies() + "\nAmount: " +amount);
+       if(source.equals(currency.getSource()) && amount > 0) {
+
+           log.info("Source: " +currency.getSource() + "\nAmount: " +currency.getAmount());
        }
        else
        {
