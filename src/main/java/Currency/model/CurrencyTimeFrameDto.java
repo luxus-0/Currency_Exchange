@@ -1,4 +1,4 @@
-package Currency.webclient.currency;
+package Currency.model;
 
 import Currency.model.CurrencyDto;
 import lombok.AllArgsConstructor;
