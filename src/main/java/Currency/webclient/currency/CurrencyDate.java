@@ -3,7 +3,7 @@ package Currency.webclient.currency;
 import Currency.exception.CurrencyDateNotFoundException;
 import Currency.model.CurrencyConverterDto;
 import Currency.model.CurrencyDateDto;
-import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -12,12 +12,12 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Service
-@NoArgsConstructor
+@AllArgsConstructor
 @Log4j2
 public class CurrencyDate {
 
-    private CurrencyUrl url;
-    private CurrencyDateDto dateDto;
+    private final CurrencyUrl url;
+    private final CurrencyDateDto dateDto;
 
     public CurrencyDateDto getDateCurrency(LocalDate date) {
         if(url.getUrlDateCurrency().isEmpty())
