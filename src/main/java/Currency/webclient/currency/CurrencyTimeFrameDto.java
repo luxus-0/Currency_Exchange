@@ -17,4 +17,9 @@ public class CurrencyTimeFrameDto{
     private final Set<CurrencyDto> currencies;
     private final LocalDate startDate;
     private final LocalDate endDate;
+
+    public void get()
+    {
+
+    }
 }
