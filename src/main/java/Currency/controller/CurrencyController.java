@@ -33,10 +33,10 @@ public class CurrencyController {
         currencyScheduled.getLiveCurrency();
     }
 
-    @GetMapping("/currencies/source={source}/amount={amount}")
-    public CurrencyDto getSource(@PathVariable String source,@PathVariable Float amount)
+    @GetMapping("/currencies/amount={amount}/source={source}")
+    public CurrencyDto getSource(@PathVariable Float amount,@PathVariable String source)
     {
-        return currencyClient.getSourceCurrency(source, amount);
+        return currencyClient.getSourceCurrency(amount, source);
     }
 
     @GetMapping("/currencies/date/{date}")
