@@ -2,31 +2,30 @@ package Currency.webclient.currency;
 
 import Currency.exception.SourceCurrencyNotFoundException;
 import Currency.model.CurrencyDto;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
 @Log4j2
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CurrencyClient {
 
     private final RestTemplate restTemplate = new RestTemplate();
-    private static final String CURRENCY_URL = "http://api.currencylayer.com/";
-    private static final String ACCESS_KEY = "c3a793be6c037bb9b765cbd61037d4a0";
+    private final CurrencyUrl currencyUrl;
+    private final CurrencyDtoCreator builderCurrency;
 
     public CurrencyDto getSourceCurrency(String source,Float amount)
     {
-       CurrencyDto currencyDto =  callUsd("live?access_key={accessKey}&format=1&source={source}",
+       CurrencyDto currencyDto =  callUsd(currencyUrl.getUrlSourceAndAmountCurrency(),
                 CurrencyDto.class,
-                ACCESS_KEY,source);
+                getAccessKey(),source,amount);
 
-        currencyDto.setAmount(amount);
+       builderCurrency.createSourceCurrencies(source,amount);
+       if(source.equals("") && amount > 0) {
 
-       if(source.equals("USD") || source.equals("EUR") || source.equals("PLN") && amount > 0) {
-
-           log.info("Currencies source: " +currencyDto.getCurrencies() + "\nAmount: " +amount);
+           log.info("All Currencies: " +currencyDto.getCurrencies() + "\nAmount: " +amount);
        }
        else
        {
@@ -36,8 +35,12 @@ public class CurrencyClient {
     }
 
     public <T> T callUsd(String url, Class<T> reponseType, Object...objects) {
-        return restTemplate.getForObject(CURRENCY_URL + url
-                , reponseType, objects);
+        return restTemplate.getForObject(currencyUrl.getUrl() + url, reponseType, objects);
+    }
+
+    public String getAccessKey()
+    {
+         return "c3a793be6c037bb9b765cbd61037d4a0";
     }
 
 }
