@@ -7,13 +7,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-@Builder
+@Setter
 @AllArgsConstructor
 @Log4j2
 public class CurrencyDto {
 
    private final Set<String> currencies = new HashSet<>();
    private float amount;
+   private String source;
 
    public CurrencyDto() {
 
@@ -23,5 +24,7 @@ public class CurrencyDto {
 
       currencies.stream().filter(p -> p.length() > 0)
               .findAny().orElseThrow();
+
+      log.info("Currencies");
    }
 }
