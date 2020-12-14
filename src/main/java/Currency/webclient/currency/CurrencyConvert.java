@@ -1,20 +1,23 @@
 package Currency.webclient.currency;
 
 import Currency.model.CurrencyConverterDto;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-@Component
+@Service
 @Log4j2
+@AllArgsConstructor
 public class CurrencyConvert {
 
-    private CurrencyUrl url;
+    private final CurrencyUrl url;
 
     public CurrencyConverterDto convert(String from, String to, Float amount) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
