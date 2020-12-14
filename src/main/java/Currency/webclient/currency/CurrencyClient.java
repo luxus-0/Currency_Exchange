@@ -14,19 +14,19 @@ public class CurrencyClient {
     private final RestTemplate restTemplate = new RestTemplate();
     private final CurrencyUrl currencyUrl;
 
-    public CurrencyDto getSourceCurrency(String source,Float amount)
+    public CurrencyDto getSourceCurrency(Float amount,String source)
     {
        CurrencyDto currencyDto =  callUsd(currencyUrl.getUrlSourceAndAmountCurrency(),
                 CurrencyDto.class,
-                getAccessKey(),source,amount);
+                getAccessKey(),amount,source);
 
        CurrencyDto currency = new CurrencyDto();
-       currency.setSource(source);
        currency.setAmount(amount);
+       currency.setSource(source);
 
        if(source.equals(currency.getSource()) && amount > 0) {
 
-           log.info("Source: " +currency.getSource() + "\nAmount: " +currency.getAmount());
+           log.info("Amount: " +amount + " Source: " +source);
        }
        else
        {
