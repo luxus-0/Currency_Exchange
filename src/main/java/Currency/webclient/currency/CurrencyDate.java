@@ -34,7 +34,6 @@ public class CurrencyDate {
             log.info(currencyDate);
             log.info(currencyDate2);
             log.info(currencyDate3);
-
         }
 
         return dateDto;
