@@ -1,7 +1,6 @@
 package Currency.controller;
 
 import Currency.model.CurrencyConverterDto;
-import Currency.model.CurrencyDateDto;
 import Currency.model.CurrencyDto;
 import Currency.webclient.currency.CurrencyClient;
 import Currency.webclient.currency.CurrencyConvert;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @RestController
 @AllArgsConstructor
@@ -40,9 +40,9 @@ public class CurrencyController {
     }
 
     @GetMapping("/currencies/date/{date}")
-    public CurrencyDateDto getCurrencyDate(@PathVariable LocalDate date)
+    public Set<LocalDate> getCurrencyDate(@PathVariable LocalDate date)
     {
-        return currencyDate.getDateCurrency(date);
+        return currencyDate.getCurrencyDate(date);
     }
 
     @GetMapping("/currencies/convert/from/{from}/to/{to}/amount/{amount}")
