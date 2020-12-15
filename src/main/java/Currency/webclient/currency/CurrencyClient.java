@@ -14,7 +14,7 @@ public class CurrencyClient {
     private final RestTemplate restTemplate = new RestTemplate();
     private final CurrencyUrl currencyUrl;
 
-    public CurrencyDto getSourceCurrency(Float amount,String source)
+    public CurrencyDto getCurrencyAmountWithSource(Float amount, String source)
     {
        CurrencyDto currencyDto =  callUsd(currencyUrl.getUrlSourceAndAmountCurrency(),
                 CurrencyDto.class,
