@@ -31,7 +31,6 @@ public class CurrencyDate {
             JSONObject currencyDate = new JSONObject(url.getUrlDateCurrency().indexOf(0));
             JSONObject currencyDate2 = new JSONObject(url.getUrlDateCurrency().indexOf(1));
             JSONObject currencyDate3 = new JSONObject(url.getUrlDateCurrency().indexOf(2));
-
             log.info(currencyDate);
             log.info(currencyDate2);
             log.info(currencyDate3);
