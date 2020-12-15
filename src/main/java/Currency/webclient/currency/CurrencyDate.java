@@ -20,7 +20,7 @@ public class CurrencyDate {
     private final CurrencyDateDto dateDto;
 
     public CurrencyDateDto getDateCurrency(LocalDate date) {
-        if(url.getUrlDateCurrency().isEmpty())
+        if(url.getUrlDateCurrency().isEmpty() && date == null)
         {
             log.info("Currency date is empty");
         }
