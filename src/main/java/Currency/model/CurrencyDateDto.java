@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -28,7 +29,7 @@ public class CurrencyDateDto {
     private CurrencyDateCreator dateCreator;
     private CurrencyConverterCreator converterCreator;
 
-    public Set<LocalDate> get(LocalDate date,String from,String to,Float amount) throws Exception {
+    public Set<LocalDate> getCurrencyDateWithConverter(@DateTimeFormat(pattern = "yyyy-mm-dd") LocalDate date, String from, String to, Float amount) throws Exception {
         currenciesDateDto = Set.of(date);
         currenciesConverterDto = Set.of(currencyConvert.convert(from,to,amount));
         dateCreator.create(currenciesDateDto);
