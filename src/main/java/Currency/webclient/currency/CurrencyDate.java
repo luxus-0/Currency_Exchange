@@ -8,7 +8,6 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -18,7 +17,7 @@ public class CurrencyDate {
     private final CurrencyUrl url;
     private final CurrencyDateDto dateDto;
 
-    public Set<LocalDate> getCurrencyDate(LocalDate date) {
+    public CurrencyDateDto getCurrencyDate(LocalDate date) {
         if(url.getUrlDateCurrency().isEmpty() && date == null)
         {
             throw new DateCurrencyException("Currency date is empty");
@@ -33,7 +32,7 @@ public class CurrencyDate {
 
         }
 
-        return dateDto.get();
+        return dateDto;
     }
 
 
