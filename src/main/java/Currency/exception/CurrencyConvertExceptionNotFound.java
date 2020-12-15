@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class CurrencyConvertNotFoundException extends RuntimeException {
-    public CurrencyConvertNotFoundException(String info) {
+public class CurrencyConvertExceptionNotFound extends RuntimeException {
+    public CurrencyConvertExceptionNotFound(String info) {
     }
 }
