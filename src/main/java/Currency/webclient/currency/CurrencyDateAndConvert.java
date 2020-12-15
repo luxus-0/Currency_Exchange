@@ -2,14 +2,18 @@ package Currency.webclient.currency;
 
 import Currency.exception.CurrencyDateNotFoundException;
 import Currency.model.CurrencyConverterDto;
+import Currency.model.CurrencyDateAndConvertDto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class CurrencyDateAndConvert {
 
     private Set<LocalDate> currenciesDateDto;
@@ -18,7 +22,7 @@ public class CurrencyDateAndConvert {
     private CurrencyDateCreator dateCreator;
     private CurrencyConverterCreator converterCreator;
 
-    public Set<LocalDate> getCurrencyDateWithConverter(@DateTimeFormat(pattern = "yyyy-mm-dd") LocalDate date, String from, String to, Float amount) throws Exception {
+    public CurrencyDateAndConvertDto getCurrencyDateWithConverter(@DateTimeFormat(pattern = "yyyy-mm-dd") LocalDate date, String from, String to, Float amount) throws Exception {
         currenciesDateDto = Set.of(date);
         currenciesConverterDto = Set.of(currencyConvert.convert(from,to,amount));
         dateCreator.create(currenciesDateDto);
@@ -31,6 +35,8 @@ public class CurrencyDateAndConvert {
                 .filter(p -> p.getFrom().equals(from) && p.getTo().equals(to) && p.getAmount() > 0)
                 .findAny()
                 .orElseThrow(() -> new CurrencyDateNotFoundException("currency converter not found!!"));
-        return currenciesDateDto;
+
+        return new CurrencyDateAndConvertDto(currenciesConverterDto,currenciesDateDto);
     }
+
 }
