@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CurrencyConverterDto {
-    private Long id;
     private String from;
     private String to;
     private float amount;
