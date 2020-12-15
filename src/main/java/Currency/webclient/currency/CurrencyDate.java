@@ -1,6 +1,6 @@
 package Currency.webclient.currency;
 
-import Currency.exception.DateCurrencyException;
+import Currency.exception.CurrencyDateNotFoundException;
 import Currency.model.CurrencyDateDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -20,7 +20,7 @@ public class CurrencyDate {
     public CurrencyDateDto getCurrencyDate(LocalDate date) {
         if(url.getUrlDateCurrency().isEmpty() && date == null)
         {
-            throw new DateCurrencyException("Currency date is empty");
+            throw new CurrencyDateNotFoundException("Currency date is empty");
         }
         else
         {

@@ -1,6 +1,6 @@
 package Currency.webclient.currency;
 
-import Currency.exception.SourceCurrencyNotFoundException;
+import Currency.exception.CurrencySourceNotFoundException;
 import Currency.model.CurrencyDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class CurrencyClient {
        }
        else
        {
-           throw new SourceCurrencyNotFoundException("Source Currency Not Found");
+           throw new CurrencySourceNotFoundException("Source Currency Not Found");
        }
        return currencyDto;
     }
