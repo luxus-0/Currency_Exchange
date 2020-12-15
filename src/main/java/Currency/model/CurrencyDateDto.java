@@ -44,4 +44,5 @@ public class CurrencyDateDto {
                 .orElseThrow(() -> new CurrencyDateNotFoundException("currency date not found!!"));
         return currenciesDateDto;
     }
+
 }
