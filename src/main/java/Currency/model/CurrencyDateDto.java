@@ -21,6 +21,7 @@ import java.util.Set;
 @Component
 @Log4j2
 public class CurrencyDateDto {
+
     private Set<LocalDate> currenciesDateDto;
     private Set<CurrencyConverterDto> currenciesConverterDto;
     private CurrencyConvert currencyConvert;
