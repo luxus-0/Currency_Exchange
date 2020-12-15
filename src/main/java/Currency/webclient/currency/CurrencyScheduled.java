@@ -18,7 +18,7 @@ public class CurrencyScheduled {
     private final CurrencyUrl url = new CurrencyUrl();
 
     @Scheduled(fixedRate = 6000)
-    public void getAllCurrency() throws Exception {
+    public void getCurrency() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
@@ -31,7 +31,7 @@ public class CurrencyScheduled {
     }
 
     @Scheduled(fixedRate = 6000)
-    public void getLiveCurrency() throws Exception {
+    public void getCurrencyLive() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
