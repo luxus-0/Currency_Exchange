@@ -5,6 +5,7 @@ import Currency.model.CurrencyConverterDto;
 import Currency.model.CurrencyDateAndConvertDto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
+@Log4j2
 public class CurrencyDateAndConvert {
 
     private Set<LocalDate> currenciesDateDto;
@@ -36,6 +38,8 @@ public class CurrencyDateAndConvert {
                 .findAny()
                 .orElseThrow(() -> new CurrencyDateNotFoundException("currency converter not found!!"));
 
+        log.info(currenciesDateDto);
+        log.info(currenciesConverterDto);
         return new CurrencyDateAndConvertDto(currenciesConverterDto,currenciesDateDto);
     }
 
