@@ -39,5 +39,4 @@ public class CurrencyDateAndConvert {
         log.info(currenciesConverterDto);
         return new CurrencyDateAndConvertDto(currenciesConverterDto,currenciesDateDto);
     }
-
 }
