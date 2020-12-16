@@ -13,7 +13,8 @@ public class CurrencyUrl {
     }
     public String getUrlLiveCurrency() { return getUrl() +"live?"; }
     public String getUrlDateCurrency() { return getUrl() +"historical"+ getKey()+"/date={date}"; }
-    public String getUrlSourceAndAmountCurrency() { return getUrl() + getUrlDateCurrency() + getKey() + "&source={source}" +"&amount={amount}";}
+    public String getUrlAmountWithSourceCurrency() { return getUrl() + getUrlDateCurrency() + getKey() + "&source={source}" +"&amount={amount}";}
+    public String getUrlConvert() { return getUrl() + "convert" + getKey() +"&from={from}&to={to}&amount={amount}";}
     public String getUrlTimeFrameCurrency(){ return getUrl() +"timeframe" +getKey() +" &currencies={currencies}&startDate ={startDate}&endDate={endDate}";};
     public String getKey() { return "?access_key=07f5f38393ee1ada9be581377906ffca";}
 }
