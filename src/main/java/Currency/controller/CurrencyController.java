@@ -2,10 +2,10 @@ package Currency.controller;
 
 import Currency.model.CurrencyConverterDto;
 import Currency.model.CurrencyDateAndConvertDto;
-import Currency.model.CurrencyDateDto;
 import Currency.model.CurrencyDto;
 import Currency.webclient.currency.*;
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,24 +32,23 @@ public class CurrencyController {
         currencyScheduled.getCurrencyLive();
     }
 
-    @GetMapping("/currencies/amount={amount}/source={source}")
+    @GetMapping("/currencies/{date}")
+    public LocalDate getCurrencyDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)  LocalDate date) throws Exception {
+        return currencyDate.getCurrencyDate(date);
+    }
+
+    @GetMapping("/currencies/{amount}/{source}")
     public CurrencyDto getCurrencyAmountWithSource(@PathVariable Float amount,@PathVariable String source)
     {
         return currencyClient.getCurrencyAmountWithSource(amount, source);
     }
 
-    @GetMapping("/currencies/date/{date}")
-    public CurrencyDateDto getCurrencyDate(@PathVariable LocalDate date)
-    {
-        return currencyDate.getCurrencyDate(date);
-    }
-
-    @GetMapping("/currencies/date/{date}/from/{from}/to/{to}/amount/{amount}")
-    public CurrencyDateAndConvertDto getCurrencyDateWithConvert(@PathVariable LocalDate date, @PathVariable String from, @PathVariable String to, @PathVariable Float amount) throws Exception {
+    @GetMapping("/currencies/{date}/{from}/{to}/{amount}")
+    public CurrencyDateAndConvertDto getCurrencyDateWithConvert(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)  LocalDate date, @PathVariable String from, @PathVariable String to, @PathVariable Float amount) throws Exception {
         return currencyDateAndConvert.getCurrencyDateWithConverter(date, from, to, amount);
     }
 
-    @GetMapping("/currencies/convert/from/{from}/to/{to}/amount/{amount}")
+    @GetMapping("/currencies/convert/{from}/{to}/{amount}")
     public CurrencyConverterDto getCurrencyConvert(@PathVariable String from, @PathVariable String to, @PathVariable Float amount) throws Exception {
         return currencyConvert.convert(from, to, amount);
     }
