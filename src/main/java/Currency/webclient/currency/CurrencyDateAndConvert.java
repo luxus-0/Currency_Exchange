@@ -4,27 +4,24 @@ import Currency.exception.CurrencyDateNotFoundException;
 import Currency.model.CurrencyConverterDto;
 import Currency.model.CurrencyDateAndConvertDto;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
 import java.util.Set;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Component
 @Log4j2
 public class CurrencyDateAndConvert {
 
     private Set<LocalDate> currenciesDateDto;
     private Set<CurrencyConverterDto> currenciesConverterDto;
-    private CurrencyConvert currencyConvert;
-    private CurrencyDateCreator dateCreator;
-    private CurrencyConverterCreator converterCreator;
+    private final CurrencyConvert currencyConvert;
+    private final CurrencyDateCreator dateCreator;
+    private final CurrencyConverterCreator converterCreator;
 
-    public CurrencyDateAndConvertDto getCurrencyDateWithConverter(@DateTimeFormat(pattern = "yyyy-mm-dd") LocalDate date, String from, String to, Float amount) throws Exception {
+    public CurrencyDateAndConvertDto getCurrencyDateWithConverter(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, String from, String to, Float amount) throws Exception {
         currenciesDateDto = Set.of(date);
         currenciesConverterDto = Set.of(currencyConvert.convert(from,to,amount));
         dateCreator.create(currenciesDateDto);
