@@ -4,7 +4,6 @@ import Currency.model.CurrencyConverterDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
@@ -18,12 +17,13 @@ import java.net.http.HttpResponse;
 public class CurrencyConvert {
 
     private final CurrencyUrl url;
+    private final CurrencyConverterDto currencyConverterDto;
 
     public CurrencyConverterDto convert(String from, String to, Float amount) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(url.getUrl() + "/convert" + url.getKey() +"&from={from}&to={to}" + "&format=1" + "&amount={amount}"))
+                .uri(URI.create(url.getUrlConvert()))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -37,6 +37,6 @@ public class CurrencyConvert {
             log.info(jsonObject);
         }
 
-        return convert(from, to, amount);
+        return currencyConverterDto;
     }
 }
