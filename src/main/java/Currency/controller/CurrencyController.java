@@ -3,6 +3,7 @@ package Currency.controller;
 import Currency.model.CurrencyConverterDto;
 import Currency.model.CurrencyDateAndConvertDto;
 import Currency.model.CurrencyDto;
+import Currency.model.CurrencyTimeFrameDto;
 import Currency.webclient.currency.*;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,6 +22,7 @@ public class CurrencyController {
     private final CurrencyDate currencyDate;
     private final CurrencyConvert currencyConvert;
     private final CurrencyDateAndConvert currencyDateAndConvert;
+    private final CurrencyTimeFrame currencyTimeFrame;
 
     @GetMapping("/currencies")
     public void getCurrency() throws Exception {
@@ -53,4 +55,9 @@ public class CurrencyController {
         return currencyConvert.convert(from, to, amount);
     }
 
+    @GetMapping("/currencies/timeFrame/{currencies}/{startDate}/{endDate}")
+    public CurrencyTimeFrameDto getCurrencyTimeFrame(@PathVariable String currencies, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate)
+    {
+        return currencyTimeFrame.getCurrencyTimeFrame(currencies,startDate,endDate);
+    }
 }
