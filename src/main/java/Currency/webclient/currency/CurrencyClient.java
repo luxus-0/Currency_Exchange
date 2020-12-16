@@ -16,15 +16,14 @@ public class CurrencyClient {
 
     public CurrencyDto getCurrencyAmountWithSource(Float amount, String source)
     {
-       CurrencyDto currencyDto =  callUsd(currencyUrl.getUrlSourceAndAmountCurrency(),
+       CurrencyDto currencyDto =  callUsd(currencyUrl.getUrlAmountWithSourceCurrency(),
                 CurrencyDto.class,
                 getAccessKey(),amount,source);
 
-       CurrencyDto currency = new CurrencyDto();
-       currency.setAmount(amount);
-       currency.setSource(source);
+       currencyDto.setAmount(amount);
+       currencyDto.setSource(source);
 
-       if(source.equals(currency.getSource()) && amount > 0) {
+       if(source.equals(currencyDto.getSource()) && amount > 0) {
 
            log.info("Amount: " +amount + " Source: " +source);
        }
