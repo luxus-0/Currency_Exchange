@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.Set;
 
-@Getter
 @Builder
 @AllArgsConstructor
 public class CurrencyDateDto {
