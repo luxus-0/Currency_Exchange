@@ -39,10 +39,10 @@ public class CurrencyController {
         return currencyDate.getCurrencyDate(date);
     }
 
-    @GetMapping("/currencies/{amount}/{source}")
-    public CurrencyDto getCurrencyAmountWithSource(@PathVariable Float amount,@PathVariable String source)
+    @GetMapping("/currencies/{currencies}/{amount}/{source}")
+    public CurrencyDto getCurrencyAmountWithSource(@PathVariable String currencies,@PathVariable Float amount,@PathVariable String source)
     {
-        return currencyClient.getCurrencyAmountWithSource(amount, source);
+        return currencyClient.getCurrencyAmountWithSource(currencies,amount, source);
     }
 
     @GetMapping("/currencies/{date}/{from}/{to}/{amount}")
