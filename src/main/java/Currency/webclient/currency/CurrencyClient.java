@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Set;
+
 @Service
 @Log4j2
 @AllArgsConstructor
@@ -13,15 +15,18 @@ public class CurrencyClient {
 
     private final RestTemplate restTemplate = new RestTemplate();
     private final CurrencyUrl currencyUrl;
+    private final CurrencyDtoCreator currencyDtoCreator;
+    private final CurrencyDto currenciesDto;
 
-    public CurrencyDto getCurrencyAmountWithSource(Float amount, String source)
+    public CurrencyDto getCurrencyAmountWithSource(String currency,Float amount, String source)
     {
        CurrencyDto currencyDto =  callUsd(currencyUrl.getUrlAmountWithSourceCurrency(),
                 CurrencyDto.class,
-                getAccessKey(),amount,source);
+                getAccessKey(),currency,amount,source);
 
-       currencyDto.setAmount(amount);
-       currencyDto.setSource(source);
+       Set<String> currencies = currenciesDto.getCurrencies();
+       currencies.add(currency);
+       currencyDtoCreator.create(currencies,amount,source);
 
        if(source.equals(currencyDto.getSource()) && amount > 0) {
 
