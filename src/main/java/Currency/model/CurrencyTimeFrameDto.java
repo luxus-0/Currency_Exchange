@@ -1,22 +1,18 @@
 package Currency.model;
 
-import Currency.model.CurrencyDto;
-import lombok.*;
-import org.springframework.stereotype.Component;
-
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import java.time.LocalDate;
 import java.util.Set;
 
-@Component
 @Getter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 public class CurrencyTimeFrameDto{
-    @Id
-    private Long id;
-    private Set<String> currenciesTimeFrame;
-    private LocalDate startDate;
-    private LocalDate endDate;
+
+    private final Long id;
+    private final Set<String> currenciesTimeFrame;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
 }

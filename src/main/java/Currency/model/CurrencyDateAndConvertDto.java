@@ -3,18 +3,14 @@ package Currency.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.Set;
 
-@Component
 @Getter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 public class CurrencyDateAndConvertDto {
-    private  Set<CurrencyConverterDto> currencyConverterDto;
-    private  Set<LocalDate> currencyDateDto;
+    private final Set<CurrencyConverterDto> currencyConverterDto;
+    private final Set<LocalDate> currencyDateDto;
 }
