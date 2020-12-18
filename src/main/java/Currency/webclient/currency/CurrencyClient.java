@@ -26,15 +26,15 @@ public class CurrencyClient {
 
        Set<String> currencies = new HashSet<>();
        currencies.add(currency);
-       currencyDtoCreator.create(currencies,amount,source);
+       currencyDtoCreator.create(amount,source);
 
-       if(!source.isEmpty() && amount > 0) {
+       if(!currencies.isEmpty() && !source.isEmpty() && amount > 0) {
 
-           log.info("Amount: " +amount + " Source: " +source);
+           log.info("Currencies: " + currencies+"\nAmount: " +amount + "\nSource: " +source);
        }
        else
        {
-           throw new CurrencySourceNotFoundException("Source Currency Not Found");
+           throw new CurrencySourceNotFoundException("Currencies and source and amount not found!!");
        }
        return currencyDto;
     }
