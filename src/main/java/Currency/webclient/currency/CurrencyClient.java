@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
@@ -16,7 +17,6 @@ public class CurrencyClient {
     private final RestTemplate restTemplate = new RestTemplate();
     private final CurrencyUrl currencyUrl;
     private final CurrencyDtoCreator currencyDtoCreator;
-    private final CurrencyDto currenciesDto;
 
     public CurrencyDto getCurrencyAmountWithSource(String currency,Float amount, String source)
     {
@@ -24,11 +24,11 @@ public class CurrencyClient {
                 CurrencyDto.class,
                 getAccessKey(),currency,amount,source);
 
-       Set<String> currencies = currenciesDto.getCurrencies();
+       Set<String> currencies = new HashSet<>();
        currencies.add(currency);
        currencyDtoCreator.create(currencies,amount,source);
 
-       if(source.equals(currencyDto.getSource()) && amount > 0) {
+       if(!source.isEmpty() && amount > 0) {
 
            log.info("Amount: " +amount + " Source: " +source);
        }
