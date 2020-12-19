@@ -17,6 +17,5 @@ public class CurrencyDateCreator {
         return CurrencyDateDto.builder()
                 .currenciesDateDto(currencyDateDto)
                 .build();
-
     }
 }
