@@ -19,23 +19,23 @@ public class CurrencyClient {
 
     public CurrencyDto getCurrencyAmountWithSource(String currency, Float amount, String source)
     {
-       CurrencyDto currencyDto =  callUsd(currencyUrl.getUrlAmountWithSourceCurrency(),
+       callUsd(currencyUrl.getUrlAmountWithSourceCurrency(),
                 CurrencyDto.class,
                 getAccessKey(),currency,amount,source);
 
        Set<String> currencies = new HashSet<>();
        currencies.add(currency);
-       currencyDtoCreator.create(amount,source);
+       CurrencyDto dto = currencyDtoCreator.create(currencies,amount,source);
 
        if(!currencies.isEmpty() && !source.isEmpty() && amount > 0) {
 
-           log.info("Currencies: " + currencies+"\nAmount: " +amount + "\nSource: " +source);
+           log.info("\nCurrencies: " + currencies+"\nAmount: " +amount + "\nSource: " +source);
        }
        else
        {
            throw new CurrencySourceNotFoundException("Currencies and source and amount not found!!");
        }
-       return currencyDto;
+       return dto;
     }
 
     public <T> T callUsd(String url, Class<T> reponseType, Object...objects) {
