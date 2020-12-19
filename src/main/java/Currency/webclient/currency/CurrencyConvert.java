@@ -21,21 +21,22 @@ public class CurrencyConvert {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(url.getUrlConvert()))
+                .uri(URI.create(getUrlConvert(from,to,amount)))
                 .build();
-
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         JSONObject jsonObject = new JSONObject(response.body());
         if(jsonObject.isEmpty())
         {
-            log.info("Empty currency convertion ");
+            log.info("Empty currency convert!");
         }
         else
         {
             log.info(jsonObject);
         }
-
         return new CurrencyConverterDto(from,to,amount);
     }
+
+    public String getUrlConvert(String from, String to, Float amount) { return url.getUrl() + "convert" + url.getKey() +"&from="+from+ "&to="+to+"&amount="+amount;};
+
 }
