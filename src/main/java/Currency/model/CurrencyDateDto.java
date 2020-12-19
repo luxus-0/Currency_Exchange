@@ -17,10 +17,5 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CurrencyDateDto {
-
     private Set<LocalDate> currenciesDateDto;
-    private Set<CurrencyConverterDto> currenciesConverterDto;
-    private CurrencyConvert currencyConvert;
-    private CurrencyDateCreator dateCreator;
-    private CurrencyConverterCreator converterCreator;
 }
