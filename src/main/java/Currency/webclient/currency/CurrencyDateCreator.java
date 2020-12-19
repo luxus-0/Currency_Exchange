@@ -10,7 +10,6 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Service
-@AllArgsConstructor
 public class CurrencyDateCreator {
 
     public CurrencyDateDto create(Set<LocalDate> currencyDateDto)

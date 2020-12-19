@@ -3,15 +3,14 @@ package Currency.webclient.currency;
 import Currency.model.CurrencyTimeFrameDto;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-
 @Service
 public class CurrencyTimeFrameCreator {
 
-    public CurrencyTimeFrameDto createCurrencyTimeFrame(LocalDate startDate, LocalDate endDate) {
+    public CurrencyTimeFrameDto createCurrencyTimeFrame(CurrencyTimeFrameDto currencyTimeFrameDto) {
         return CurrencyTimeFrameDto.builder()
-                .startDate(startDate)
-                .endDate(endDate)
+                .startDate(currencyTimeFrameDto.getStartDate())
+                .endDate(currencyTimeFrameDto.getEndDate())
+                .currenciesTimeFrame(currencyTimeFrameDto.getCurrenciesTimeFrame())
                 .build();
     }
 }

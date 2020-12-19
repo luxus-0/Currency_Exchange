@@ -1,13 +1,11 @@
 package Currency.webclient.currency;
 
 import Currency.exception.CurrencyDateNotFoundException;
-import Currency.model.CurrencyDateDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 
 @Service

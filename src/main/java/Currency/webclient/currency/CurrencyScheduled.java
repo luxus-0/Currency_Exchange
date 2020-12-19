@@ -11,14 +11,14 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 @Service
-@Log4j2
 @AllArgsConstructor
+@Log4j2
 public class CurrencyScheduled {
 
-    private final CurrencyUrl url = new CurrencyUrl();
+    private final CurrencyUrl url;
 
     @Scheduled(fixedRate = 6000)
-    public void getCurrency() throws Exception {
+    public HttpResponse<String> getCurrency() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
@@ -28,10 +28,12 @@ public class CurrencyScheduled {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         JSONObject jsonObject = new JSONObject(response.body());
         log.info("Currency: " +jsonObject);
+
+        return response;
     }
 
     @Scheduled(fixedRate = 6000)
-    public void getCurrencyLive() throws Exception {
+    public HttpResponse<String> getCurrencyLive() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
@@ -41,5 +43,7 @@ public class CurrencyScheduled {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         JSONObject jsonObject = new JSONObject(response.body());
         log.info("Live currency: " +jsonObject);
+
+        return response;
     }
 }

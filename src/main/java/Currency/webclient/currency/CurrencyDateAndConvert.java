@@ -6,12 +6,12 @@ import Currency.model.CurrencyDateAndConvertDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.Set;
 
+@Service
 @AllArgsConstructor
-@Component
 @Log4j2
 public class CurrencyDateAndConvert {
 
@@ -20,6 +20,7 @@ public class CurrencyDateAndConvert {
     private final CurrencyConvert currencyConvert;
     private final CurrencyDateCreator dateCreator;
     private final CurrencyConverterCreator converterCreator;
+
 
     public CurrencyDateAndConvertDto getCurrencyDateWithConverter(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, String from, String to, Float amount) throws Exception {
         currenciesDateDto = Set.of(date);

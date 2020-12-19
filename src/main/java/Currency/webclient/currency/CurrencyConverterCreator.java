@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class CurrencyConverterCreator {
 
-    public CurrencyConverterDto create(CurrencyConverterDto converterDto) {
+    public CurrencyConverterDto create(CurrencyConverterDto currencyConverterDto) {
         return CurrencyConverterDto.builder()
-                .from(converterDto.getFrom())
-                .to(converterDto.getTo())
-                .amount(converterDto.getAmount())
+                .from(currencyConverterDto.getFrom())
+                .to(currencyConverterDto.getTo())
+                .amount(currencyConverterDto.getAmount())
                 .build();
     }
 }
