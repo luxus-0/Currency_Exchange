@@ -1,9 +1,6 @@
 package Currency.controller;
 
-import Currency.model.CurrencyConverterDto;
-import Currency.model.CurrencyDateAndConvertDto;
-import Currency.model.CurrencyDto;
-import Currency.model.CurrencyTimeFrameDto;
+import Currency.model.*;
 import Currency.webclient.currency.*;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -35,7 +32,7 @@ public class CurrencyController {
     }
 
     @GetMapping("/currencies/{date}")
-    public LocalDate getCurrencyDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)  LocalDate date) throws Exception {
+    public CurrencyDateDto getCurrencyDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)  LocalDate date) throws Exception {
         return currencyDate.getCurrencyDate(date);
     }
 
