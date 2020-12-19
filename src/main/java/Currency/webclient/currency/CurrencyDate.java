@@ -17,7 +17,6 @@ public class CurrencyDate {
 
     private final CurrencyUrl url;
     private final CurrencyDateCreator currencyDateCreator;
-    private final CurrencyDateDto currencyDateDto;
 
     public CurrencyDateDto getCurrencyDate(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         if(url.getUrlDateCurrency().isEmpty() && date == null)
@@ -26,10 +25,10 @@ public class CurrencyDate {
         }
         else
         {
-            currencyDateCreator.create(Set.of(date));
             JSONObject currencyDate = new JSONObject(date);
             log.info(currencyDate);
+            return currencyDateCreator.create(Set.of(date));
         }
-        return currencyDateDto;
+
     }
 }
