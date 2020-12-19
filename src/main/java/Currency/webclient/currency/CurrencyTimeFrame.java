@@ -3,8 +3,6 @@ package Currency.webclient.currency;
 import Currency.model.CurrencyTimeFrameDto;
 import Currency.validation.CurrencyTimeFrameValid;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
@@ -17,14 +15,13 @@ public class CurrencyTimeFrame {
 
     private final CurrencyTimeFrameCreator creator;
     private final CurrencyTimeFrameValid currencyTimeFrameValid;
-    private final CurrencyTimeFrameDto currencyTimeFrameDto;
     private final CurrencyUrl url;
 
     public CurrencyTimeFrameDto getCurrencyTimeFrame(String currencies, LocalDate startDate, LocalDate endDate)
     {
         currencyTimeFrameValid.valid(startDate, endDate);
         Set<String> currenciesTimeFrame = Set.of(currencies);
-        creator.createCurrencyTimeFrame(new CurrencyTimeFrameDto(currenciesTimeFrame, startDate,endDate));
+        CurrencyTimeFrameDto currencyTimeFrameDto = creator.createCurrencyTimeFrame(new CurrencyTimeFrameDto(currenciesTimeFrame, startDate,endDate));
         log.info(currenciesTimeFrame);
         getUrlTimeFrame(currencies,startDate,endDate);
         return currencyTimeFrameDto;
