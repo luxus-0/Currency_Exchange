@@ -26,9 +26,10 @@ public class CurrencyDate {
         else
         {
             JSONObject currencyDate = new JSONObject(date);
+            CurrencyDateDto currencyDateDto = currencyDateCreator.create(Set.of(date));
             log.info(currencyDate);
-            return currencyDateCreator.create(Set.of(date));
+            log.info(currencyDateDto);
+            return currencyDateDto;
         }
-
     }
 }
