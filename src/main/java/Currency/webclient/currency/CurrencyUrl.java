@@ -3,8 +3,6 @@ package Currency.webclient.currency;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-
 @Component
 @AllArgsConstructor
 public class CurrencyUrl {
@@ -14,12 +12,12 @@ public class CurrencyUrl {
     public String getUrl() { return "http://api.currencylayer.com/"; }
     public String showUrlIpStack() throws Exception
     {
-        return "https://api.ipstack.com/" + Arrays.toString(currencyWithIpStack.showIpAddress()) + getKey();
+        return "https://api.ipstack.com/" + currencyWithIpStack.showIpAddress() + getKey();
     }
 
-    public String getUrlIpStack(byte[] address) throws Exception
+    public String getUrlIpStack(String address)
     {
-        return "https://api.ipstack.com/" + Arrays.toString(currencyWithIpStack.getIpAddress(address)) + getKey();
+        return "https://api.ipstack.com/" + address + getKey();
     }
     public String getUrlLiveCurrency() { return getUrl() +"live"; }
     public String getUrlDateCurrency() { return getUrl() +"historical"+ getKey()+"/date={date}"; }
