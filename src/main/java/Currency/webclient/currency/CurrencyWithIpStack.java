@@ -23,10 +23,17 @@ public class CurrencyWithIpStack {
         return hostName;
     }
 
-    public byte[] getIpAddress() throws UnknownHostException {
+    public byte[] showIpAddress() throws UnknownHostException {
         InetAddress inet6Address = Inet6Address.getLocalHost();
         byte[] ip = inet6Address.getAddress();
-        log.info("Ip address: " +ip);
+        log.info("Ip address this pc: " +ip);
+        return ip;
+    }
+
+    public byte[] getIpAddress(byte[] ip) throws UnknownHostException {
+        InetAddress inet6Address = Inet6Address.getLocalHost();
+        ip = inet6Address.getAddress();
+        log.info("Ip address this pc: " +ip);
         return ip;
     }
 }
