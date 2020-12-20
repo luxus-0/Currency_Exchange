@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Arrays;
 
 @Service
 @Log4j2
@@ -23,17 +24,15 @@ public class CurrencyWithIpStack {
         return hostName;
     }
 
-    public byte[] showIpAddress() throws UnknownHostException {
+    public String showIpAddress() throws UnknownHostException {
         InetAddress inet6Address = Inet6Address.getLocalHost();
-        byte[] ip = inet6Address.getAddress();
+        String ip = Arrays.toString(inet6Address.getAddress());
         log.info("Ip address this pc: " +ip);
         return ip;
     }
 
-    public byte[] getIpAddress(byte[] ip) throws UnknownHostException {
-        InetAddress inet6Address = Inet6Address.getLocalHost();
-        ip = inet6Address.getAddress();
-        log.info("Ip address this pc: " +ip);
+    public String getIpAddress(String ip) {
+        log.info("Ip address: " +ip);
         return ip;
     }
 }
