@@ -12,8 +12,13 @@ public class IpStackApi {
 
     private final CurrencyWithIpStack ipStack;
 
-    @GetMapping("/currencyIp")
-    public InetAddress getIpStack() throws Exception {
+    @GetMapping("/currencyLocalHost")
+    public InetAddress getLocalHostCurrency() throws Exception {
         return ipStack.showIpAddress();
+    }
+
+    @GetMapping("/currencyHostName")
+    public String getHostNameCurrency() throws Exception {
+        return ipStack.getHostName();
     }
 }
