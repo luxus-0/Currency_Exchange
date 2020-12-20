@@ -13,13 +13,13 @@ public class CurrencyWithIpStack {
 
     public InetAddress showIpAddress() throws UnknownHostException {
         InetAddress inet6Address = Inet6Address.getLocalHost();
-        log.info(inet6Address);
+        log.info("Localhost: " +inet6Address);
         return inet6Address;
     }
 
     public String getHostName() throws UnknownHostException {
         String hostName = showIpAddress().getHostName();
-        log.info(hostName);
+        log.info("Host name: " +hostName);
         return hostName;
     }
 }
