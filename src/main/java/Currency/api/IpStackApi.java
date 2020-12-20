@@ -1,5 +1,6 @@
 package Currency.api;
 
+import Currency.webclient.currency.CurrencyUrl;
 import Currency.webclient.currency.CurrencyWithIpStack;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import java.net.InetAddress;
 public class IpStackApi {
 
     private final CurrencyWithIpStack ipStack;
+    private final CurrencyUrl url;
 
     @GetMapping("/currencyLocalHost")
     public InetAddress getLocalHostCurrency() throws Exception {
@@ -24,6 +26,17 @@ public class IpStackApi {
 
     @GetMapping("/currencyIpAddress")
     public byte[] getIpCurrency() throws Exception {
-        return ipStack.getIpAddress();
+        return ipStack.showIpAddress();
     }
+
+    @GetMapping("/ipStack")
+    public String showIpStackCurrency() throws Exception {
+        return url.showUrlIpStack();
+    }
+
+    @GetMapping("/")
+    public String getIpStackCurrency(byte[] ipAddress) throws Exception {
+        return url.getUrlIpStack(ipAddress);
+    }
+
 }
