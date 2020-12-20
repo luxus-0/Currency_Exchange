@@ -29,12 +29,12 @@ public class IpStackApi {
         return ipStack.showIpAddress();
     }
 
-    @GetMapping("/ipStack")
+    @GetMapping("/showIpStack")
     public String showIpStackCurrency() throws Exception {
         return url.showUrlIpStack();
     }
 
-    @GetMapping("/")
+    @GetMapping("/getIpStack")
     public String getIpStackCurrency(byte[] ipAddress) throws Exception {
         return url.getUrlIpStack(ipAddress);
     }
