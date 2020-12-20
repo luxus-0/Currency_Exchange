@@ -11,15 +11,22 @@ import java.net.UnknownHostException;
 @Log4j2
 public class CurrencyWithIpStack {
 
-    public InetAddress showIpAddress() throws UnknownHostException {
+    public InetAddress showLocalHost() throws UnknownHostException {
         InetAddress inet6Address = Inet6Address.getLocalHost();
         log.info("Localhost: " +inet6Address);
         return inet6Address;
     }
 
     public String getHostName() throws UnknownHostException {
-        String hostName = showIpAddress().getHostName();
+        String hostName = showLocalHost().getHostName();
         log.info("Host name: " +hostName);
         return hostName;
+    }
+
+    public byte[] getIpAddress() throws UnknownHostException {
+        InetAddress inet6Address = Inet6Address.getLocalHost();
+        byte[] ip = inet6Address.getAddress();
+        log.info("Ip address: " +ip);
+        return ip;
     }
 }
