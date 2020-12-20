@@ -1,4 +1,4 @@
-package Currency.controller;
+package Currency.api;
 
 import Currency.model.*;
 import Currency.webclient.currency.*;
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 @RestController
 @AllArgsConstructor
-public class CurrencyController {
+public class CurrencyApi {
 
     private final CurrencyClient currencyClient;
     private final CurrencyScheduled currencyScheduled;
