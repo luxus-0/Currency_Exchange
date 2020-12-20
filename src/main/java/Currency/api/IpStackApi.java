@@ -4,6 +4,7 @@ import Currency.webclient.currency.CurrencyUrl;
 import Currency.webclient.currency.CurrencyWithIpStack;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import java.net.InetAddress;
 
@@ -25,7 +26,7 @@ public class IpStackApi {
     }
 
     @GetMapping("/currencyIpAddress")
-    public byte[] getIpCurrency() throws Exception {
+    public String getIpCurrency() throws Exception {
         return ipStack.showIpAddress();
     }
 
@@ -34,9 +35,9 @@ public class IpStackApi {
         return url.showUrlIpStack();
     }
 
-    @GetMapping("/getIpStack")
-    public String getIpStackCurrency(byte[] ipAddress) throws Exception {
-        return url.getUrlIpStack(ipAddress);
+    @GetMapping("/getIpStack/{ipAddress}")
+    public String getIpStackCurrency(@PathVariable String ipAddress) {
+        return ipStack.getIpAddress(ipAddress);
     }
 
 }
