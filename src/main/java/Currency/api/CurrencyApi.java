@@ -1,6 +1,7 @@
 package Currency.api;
 
-import Currency.model.*;
+import Currency.domain.model.*;
+import Currency.domain.service.*;
 import Currency.webclient.currency.*;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;

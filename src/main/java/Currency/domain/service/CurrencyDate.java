@@ -1,7 +1,7 @@
-package Currency.webclient.currency;
+package Currency.domain.service;
 
 import Currency.exception.CurrencyDateNotFoundException;
-import Currency.model.CurrencyDateDto;
+import Currency.domain.model.CurrencyDateDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;

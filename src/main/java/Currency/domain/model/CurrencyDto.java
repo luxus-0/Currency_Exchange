@@ -1,11 +1,11 @@
-package Currency.model;
+package Currency.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
-import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -13,9 +13,9 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CurrencyTimeFrameDto{
+public class CurrencyDto {
 
-    private Set<String> currenciesTimeFrame;
-    private LocalDate startDate;
-    private LocalDate endDate;
+   private final Set<String> currencies = new HashSet<>();
+   private Float amount;
+   private String source;
 }

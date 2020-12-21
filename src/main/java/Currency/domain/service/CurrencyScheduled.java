@@ -1,4 +1,4 @@
-package Currency.webclient.currency;
+package Currency.domain.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;

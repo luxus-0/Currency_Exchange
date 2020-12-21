@@ -1,4 +1,4 @@
-package Currency.config;
+package Currency.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;

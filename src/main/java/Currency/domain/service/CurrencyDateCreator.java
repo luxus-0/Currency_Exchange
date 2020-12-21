@@ -1,9 +1,6 @@
-package Currency.webclient.currency;
+package Currency.domain.service;
 
-import Currency.model.CurrencyDateDto;
-import lombok.AllArgsConstructor;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
+import Currency.domain.model.CurrencyDateDto;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

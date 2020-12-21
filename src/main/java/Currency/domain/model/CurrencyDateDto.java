@@ -1,8 +1,5 @@
-package Currency.model;
+package Currency.domain.model;
 
-import Currency.webclient.currency.CurrencyConvert;
-import Currency.webclient.currency.CurrencyConverterCreator;
-import Currency.webclient.currency.CurrencyDateCreator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

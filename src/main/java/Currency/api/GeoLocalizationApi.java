@@ -1,7 +1,7 @@
 package Currency.api;
 
-import Currency.webclient.currency.CurrencyUrl;
-import Currency.webclient.currency.CurrencyWithIpStack;
+import Currency.domain.service.CurrencyUrl;
+import Currency.domain.service.CurrencyWithIpStack;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +10,7 @@ import java.net.InetAddress;
 
 @RestController
 @AllArgsConstructor
-public class IpStackApi {
+public class GeoLocalizationApi {
 
     private final CurrencyWithIpStack ipStack;
     private final CurrencyUrl url;

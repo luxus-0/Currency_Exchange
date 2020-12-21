@@ -1,6 +1,6 @@
-package Currency.webclient.currency;
+package Currency.domain.service;
 
-import Currency.model.CurrencyDto;
+import Currency.domain.model.CurrencyDto;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
