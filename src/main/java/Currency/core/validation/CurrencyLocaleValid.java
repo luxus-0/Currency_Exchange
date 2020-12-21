@@ -15,7 +15,9 @@ public class CurrencyLocaleValid {
             log.info(currencies);
             currencies.forEach(System.out::println);
         } else {
-            throw new RuntimeException("Currency locale is empty");
+            log.error("Currencies locale is empty!!");
+            throw new RuntimeException("Currencies locale is empty!!");
+
         }
     }
 }
