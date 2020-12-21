@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class CurrencyLocale {
 
     private Long id;
