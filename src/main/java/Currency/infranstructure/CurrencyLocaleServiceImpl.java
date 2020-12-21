@@ -5,6 +5,7 @@ import Currency.domain.client.RetrofitClient;
 import Currency.domain.model.entity.CurrencyLocale;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import retrofit2.Response;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
+@Log4j2
 public class CurrencyLocaleServiceImpl {
 
     private RetrofitClient client;
@@ -22,7 +24,6 @@ public class CurrencyLocaleServiceImpl {
         Response<List<CurrencyLocaleService>> response = service.getCurrencyLocale().execute();
         List<CurrencyLocaleService> currencies = response.body();
         currencyLocaleValid.valid(currencies);
-
 
         return Response.success(currencies);
     }
@@ -36,9 +37,11 @@ public class CurrencyLocaleServiceImpl {
         return Response.success(currencies);
     }
 
-    public void addCurrencyLocale(CurrencyLocale currencyLocale) throws Exception {
+    public CurrencyLocale addCurrencyLocale(CurrencyLocale currencyLocale) throws Exception {
         CurrencyLocaleService service = client.getRetrofitClient().create(CurrencyLocaleService.class);
         service.addCurrencyLocale(new CurrencyLocale(1L, "USD")).execute();
+
+        return currencyLocale;
     }
 
 
