@@ -1,8 +1,8 @@
 package Currency.domain.service;
 
 import Currency.core.exception.CurrencyDateNotFoundException;
-import Currency.domain.model.CurrencyConverterDto;
-import Currency.domain.model.CurrencyDateAndConvertDto;
+import Currency.domain.model.dto.CurrencyConverterDto;
+import Currency.domain.model.dto.CurrencyDateAndConvertDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.format.annotation.DateTimeFormat;

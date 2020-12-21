@@ -1,6 +1,6 @@
 package Currency.domain.service;
 
-import Currency.domain.model.CurrencyTimeFrameDto;
+import Currency.domain.model.dto.CurrencyTimeFrameDto;
 import Currency.core.validation.CurrencyTimeFrameValid;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;

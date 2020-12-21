@@ -1,7 +1,7 @@
 package Currency.domain.service;
 
 import Currency.core.exception.CurrencyDateNotFoundException;
-import Currency.domain.model.CurrencyDateDto;
+import Currency.domain.model.dto.CurrencyDateDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;

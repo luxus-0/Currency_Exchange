@@ -1,7 +1,6 @@
 package Currency.infranstructure;
 
 
-import Currency.domain.service.CurrencyLocale;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -13,13 +12,13 @@ import java.util.List;
 public interface CurrencyLocaleService {
 
     @GET("/getCurrenciesLocale")
-    Call<List<CurrencyLocale>> getCurrencyLocale();
+    Call<List<Currency.domain.service.CurrencyLocaleService>> getCurrencyLocale();
 
     @GET("/getCurrenciesLocale/{name}")
-    Call<List<CurrencyLocale>> getCurrencyLocaleByName(@Path("name") String name);
+    Call<List<Currency.domain.service.CurrencyLocaleService>> getCurrencyLocaleByName(@Path("name") String name);
 
     @POST("/addCurrenciesLocale")
-    Call<Void> addProduct(@Body CurrencyLocale currencyLocale);
+    Call<Void> addProduct(@Body Currency.domain.service.CurrencyLocaleService currencyLocale);
 
 
 }

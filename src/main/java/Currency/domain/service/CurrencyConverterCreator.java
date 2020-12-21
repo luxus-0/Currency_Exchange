@@ -1,6 +1,6 @@
 package Currency.domain.service;
 
-import Currency.domain.model.CurrencyConverterDto;
+import Currency.domain.model.dto.CurrencyConverterDto;
 import org.springframework.stereotype.Service;
 
 @Service

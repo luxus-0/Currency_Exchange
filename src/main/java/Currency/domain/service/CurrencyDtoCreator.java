@@ -1,6 +1,6 @@
 package Currency.domain.service;
 
-import Currency.domain.model.CurrencyDto;
+import Currency.domain.model.dto.CurrencyDto;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

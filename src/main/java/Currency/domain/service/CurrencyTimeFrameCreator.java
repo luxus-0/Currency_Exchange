@@ -1,6 +1,6 @@
 package Currency.domain.service;
 
-import Currency.domain.model.CurrencyTimeFrameDto;
+import Currency.domain.model.dto.CurrencyTimeFrameDto;
 import org.springframework.stereotype.Service;
 
 @Service

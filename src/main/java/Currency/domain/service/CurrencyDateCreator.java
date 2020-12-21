@@ -1,6 +1,6 @@
 package Currency.domain.service;
 
-import Currency.domain.model.CurrencyDateDto;
+import Currency.domain.model.dto.CurrencyDateDto;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

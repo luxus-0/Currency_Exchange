@@ -1,4 +1,4 @@
-package Currency.domain.model;
+package Currency.domain.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

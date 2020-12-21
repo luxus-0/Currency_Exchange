@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Locale;
 
 @Service
-public class CurrencyLocale {
+public class CurrencyLocaleService {
 
     public List<Currency> getLocaleCurrency()
     {
