@@ -1,6 +1,6 @@
 package Currency.domain.service;
 
-import Currency.exception.CurrencyDateNotFoundException;
+import Currency.core.exception.CurrencyDateNotFoundException;
 import Currency.domain.model.CurrencyConverterDto;
 import Currency.domain.model.CurrencyDateAndConvertDto;
 import lombok.AllArgsConstructor;
