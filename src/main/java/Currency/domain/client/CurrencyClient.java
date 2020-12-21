@@ -1,7 +1,9 @@
-package Currency.domain.service;
+package Currency.domain.client;
 
 import Currency.core.exception.CurrencySourceNotFoundException;
 import Currency.domain.model.dto.CurrencyDto;
+import Currency.domain.service.CurrencyDtoCreator;
+import Currency.domain.service.CurrencyUrl;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
