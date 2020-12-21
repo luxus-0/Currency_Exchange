@@ -23,4 +23,9 @@ public class CurrencyApiRetrofit {
     {
         return currencyLocaleService.getCurrencyLocaleByName(name);
     }
+
+    public Call<Void> addCurrencyLocale(CurrencyLocale currencyLocale)
+    {
+        return currencyLocaleService.addProduct(currencyLocale);
+    }
 }
