@@ -1,9 +1,14 @@
 package Currency.api;
 
-import Currency.domain.service.CurrencyLocaleService;
+import Currency.domain.model.entity.CurrencyLocale;
+import Currency.infranstructure.CurrencyLocaleService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 import java.util.List;
 
@@ -11,20 +16,20 @@ import java.util.List;
 @AllArgsConstructor
 public class CurrencyApiRetrofit {
 
-    private final Currency.infranstructure.CurrencyLocaleService currencyLocaleService;
+    private final CurrencyLocaleService currencyLocaleService;
 
-    public Call<List<CurrencyLocaleService>> getLocaleCurrency()
-    {
+    @GET("/getCurrenciesLocale")
+    public Call<List<CurrencyLocaleService>> getCurrenciesLocale() {
         return currencyLocaleService.getCurrencyLocale();
     }
 
-    public Call<List<CurrencyLocaleService>> getLocaleCurrency(String name)
-    {
+    @GET("/getCurrenciesLocale/{name}")
+    public Call<List<CurrencyLocaleService>> getCurrenciesLocaleByName(@Path("name") String name) {
         return currencyLocaleService.getCurrencyLocaleByName(name);
     }
 
-    public Call<Void> addCurrencyLocale(CurrencyLocaleService currencyLocale)
-    {
+    @POST("/addCurrenciesLocale")
+    public Call<Void> addCurrenciesLocale(@Body CurrencyLocale currencyLocale) {
         return currencyLocaleService.addProduct(currencyLocale);
     }
 }
