@@ -34,4 +34,10 @@ public class CurrencyNbpApi {
     {
         return currencyNbpDate.getCurrencyDate(table,date);
     }
+
+    @GetMapping("/currencies/nbp/{table}/{startDate}/{endDate}")
+    public String getCurrencyDatePeriod(@PathVariable char table, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate)
+    {
+        return currencyNbpDate.getCurrencyDateByPeriod(table,startDate,endDate);
+    }
 }
