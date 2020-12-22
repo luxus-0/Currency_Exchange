@@ -11,6 +11,4 @@ public interface CurrencyLocaleService {
     Call<List<CurrencyLocaleService>> getCurrencyLocale();
     Call<List<CurrencyLocaleService>> getCurrencyLocaleByName(String name);
     Call<Void> addCurrencyLocale(CurrencyLocale currencyLocale);
-
-
 }
