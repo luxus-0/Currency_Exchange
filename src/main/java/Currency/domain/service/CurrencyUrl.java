@@ -14,11 +14,11 @@ public class CurrencyUrl {
     {
         return "https://api.ipstack.com/" + currencyWithIpStack.showIpAddress() + getKey();
     }
-
     public String getUrlIpStack(String address)
     {
         return "https://api.ipstack.com/" + address + getKey();
     }
+    public String getUrlNbp(char table){return "http://api.nbp.pl/api/exchangerates/tables/" +table;}
     public String getUrlLiveCurrency() { return getUrl() +"live"; }
     public String getUrlDateCurrency() { return getUrl() +"historical"+ getKey()+"/date={date}"; }
     public String getUrlAmountWithSourceCurrency() { return getUrl() + getUrlDateCurrency() + getKey() + "&source={source}" +"&amount={amount}";}
