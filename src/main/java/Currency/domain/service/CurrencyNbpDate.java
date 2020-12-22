@@ -57,4 +57,9 @@ public class CurrencyNbpDate {
         }
         return currencyDate;
     }
+
+    public String getCurrencyDateByPeriod(char table, LocalDate startDate, LocalDate endDate)
+    {
+        return "";
+    }
 }
