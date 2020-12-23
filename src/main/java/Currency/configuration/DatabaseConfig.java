@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
         @PropertySource("classpath:application-development.properties"),
         @PropertySource("classpath:application-production.properties")
 })
-public class ConfigDatabase {
+public class DatabaseConfig {
 
 
 
