@@ -4,6 +4,7 @@ import Currency.domain.model.dto.CurrencyConverterDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONObject;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -17,6 +18,7 @@ public class CurrencyConvert {
 
     private final CurrencyUrl url;
 
+    @Cacheable(cacheNames = "convertCurrency")
     public CurrencyConverterDto convert(String from, String to, Float amount) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
