@@ -29,7 +29,6 @@ public class CurrencyScheduled {
         JSONObject jsonObject = new JSONObject(response.body());
         log.info("Currency: " +jsonObject);
 
-        client.connectTimeout();
         return response;
     }
 
@@ -45,7 +44,6 @@ public class CurrencyScheduled {
         JSONObject jsonObject = new JSONObject(response.body());
         log.info("Live currency: " +jsonObject);
 
-        client.connectTimeout();
         return response;
     }
 }
