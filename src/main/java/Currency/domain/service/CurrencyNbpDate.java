@@ -5,7 +5,12 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.json.JSONObject;
 import org.springframework.stereotype.Service;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,9 +62,14 @@ public class CurrencyNbpDate {
         }
         return currencyDate;
     }
+    public HttpResponse<String> getCurrencyDateByPeriod(char table, LocalDate startDate, LocalDate endDate) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder(URI.create(url.getUrlNbp(table)+"/"+startDate+"/"+endDate)).build();
+        HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
 
-    public String getCurrencyDateByPeriod(char table, LocalDate startDate, LocalDate endDate)
-    {
-        return "";
+        JSONObject jsonCurrency = new JSONObject(response);
+        log.info(jsonCurrency);
+
+        return response;
     }
 }
