@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
-public class CurrencyApiRetrofit {
+public class CurrencyRetrofitApi {
 
     private CurrencyLocaleServiceImpl currencyLocaleService;
 
