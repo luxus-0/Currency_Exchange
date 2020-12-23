@@ -3,7 +3,7 @@ package Currency.domain.client;
 import Currency.core.exception.CurrencySourceNotFoundException;
 import Currency.domain.model.dto.CurrencyDto;
 import Currency.domain.service.CurrencyDtoCreator;
-import Currency.domain.service.CurrencyUrl;
+import Currency.domain.service.CurrencyUrlService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -16,12 +16,12 @@ import java.util.Set;
 @Log4j2
 public class CurrencyClient {
 
-    private final CurrencyUrl currencyUrl;
+    private final CurrencyUrlService currencyUrlService;
     private final CurrencyDtoCreator currencyDtoCreator;
 
     public CurrencyDto getCurrencyAmountWithSource(String currency, Float amount, String source)
     {
-       callUsd(currencyUrl.getUrlAmountWithSourceCurrency(),
+       callUsd(currencyUrlService.getUrlAmountWithSourceCurrency(),
                 CurrencyDto.class,
                 getAccessKey(),currency,amount,source);
 
@@ -42,7 +42,7 @@ public class CurrencyClient {
 
     public <T> T callUsd(String url, Class<T> reponseType, Object...objects) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(currencyUrl.getUrl() + url, reponseType, objects);
+        return restTemplate.getForObject(currencyUrlService.getUrl() + url, reponseType, objects);
     }
 
     public String getAccessKey()

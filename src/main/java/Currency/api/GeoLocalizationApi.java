@@ -1,7 +1,7 @@
 package Currency.api;
 
-import Currency.domain.service.CurrencyUrl;
-import Currency.domain.service.CurrencyWithIpStack;
+import Currency.domain.service.CurrencyUrlService;
+import Currency.domain.service.CurrencyWithIpStackService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,8 +12,8 @@ import java.net.InetAddress;
 @AllArgsConstructor
 public class GeoLocalizationApi {
 
-    private final CurrencyWithIpStack ipStack;
-    private final CurrencyUrl url;
+    private final CurrencyWithIpStackService ipStack;
+    private final CurrencyUrlService url;
 
     @GetMapping("/currencyLocalHost")
     public InetAddress getLocalHostCurrency() throws Exception {

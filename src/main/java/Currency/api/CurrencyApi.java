@@ -16,25 +16,25 @@ import java.time.LocalDate;
 public class CurrencyApi {
 
     private final CurrencyClient currencyClient;
-    private final CurrencyScheduled currencyScheduled;
-    private final CurrencyDate currencyDate;
-    private final CurrencyConverter currencyConverter;
+    private final CurrencyScheduledService currencyScheduledService;
+    private final CurrencyDateService currencyDateService;
+    private final CurrencyConverterService currencyConverterService;
     private final CurrencyDateAndConvert currencyDateAndConvert;
-    private final CurrencyTimeFrame currencyTimeFrame;
+    private final CurrencyTimeFrameService currencyTimeFrameService;
 
     @GetMapping("/currencies")
     public void getCurrency() throws Exception {
-        currencyScheduled.getCurrency();
+        currencyScheduledService.getCurrency();
     }
 
     @GetMapping("/currencies/live")
     public void getLiveCurrency() throws Exception {
-        currencyScheduled.getCurrencyLive();
+        currencyScheduledService.getCurrencyLive();
     }
 
     @GetMapping("/currencies/{date}")
-    public CurrencyDateDto getCurrencyDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)  LocalDate date) throws Exception {
-        return currencyDate.getCurrencyDate(date);
+    public CurrencyDateDto getCurrencyDateService(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)  LocalDate date) throws Exception {
+        return currencyDateService.getCurrencyDate(date);
     }
 
     @GetMapping("/currencies/{currencies}/{amount}/{source}")
@@ -49,14 +49,14 @@ public class CurrencyApi {
     }
 
     @GetMapping("/currencies/convert/{from}/{to}/{amount}")
-    public CurrencyConverterDto getCurrencyConverter(@PathVariable String from, @PathVariable String to, @PathVariable Float amount) throws Exception {
-        return currencyConverter.convert(from, to, amount);
+    public CurrencyConverterDto getCurrencyConverterService(@PathVariable String from, @PathVariable String to, @PathVariable Float amount) throws Exception {
+        return currencyConverterService.convert(from, to, amount);
     }
 
     @GetMapping("/currencies/timeFrame/{currencies}/{startDate}/{endDate}")
-    public CurrencyTimeFrameDto getCurrencyTimeFrame(@PathVariable String currencies, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate)
+    public CurrencyTimeFrameDto getCurrencyTimeFrameService(@PathVariable String currencies, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate)
     {
-        return currencyTimeFrame.getCurrencyTimeFrame(currencies,startDate,endDate);
+        return currencyTimeFrameService.getCurrencyTimeFrame(currencies,startDate,endDate);
     }
 
 }
