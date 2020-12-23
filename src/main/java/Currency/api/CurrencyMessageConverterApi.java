@@ -12,6 +12,6 @@ public class CurrencyMessageConverterApi {
     @SendTo("/topic/messages")
     public CurrencyMessageConverterDto send(CurrencyMessageConverterDto message)
     {
-        return new CurrencyMessageConverterDto(message.getFromCurrency(), message.getToCurrency(), message.getDisplay(),message.getCreatedDate());
+        return new CurrencyMessageConverterDto(message.getFromCurrency(), message.getToCurrency(), message.getDisplay(), message.getCreatedDate());
     }
 }
