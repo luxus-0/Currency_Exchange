@@ -13,9 +13,9 @@ import java.net.http.HttpResponse;
 @Service
 @AllArgsConstructor
 @Log4j2
-public class CurrencyScheduled {
+public class CurrencyScheduledService {
 
-    private final CurrencyUrl url;
+    private final CurrencyUrlService url;
 
     @Scheduled(fixedRate = 6000)
     public HttpResponse<String> getCurrency() throws Exception {

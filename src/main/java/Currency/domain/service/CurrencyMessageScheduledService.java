@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Service
 @AllArgsConstructor
-public class CurrencyMessageScheduled {
+public class CurrencyMessageScheduledService {
 
     private final SimpMessagingTemplate template;
 

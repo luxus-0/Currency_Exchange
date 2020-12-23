@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 @Service
 @Log4j2
-public class CurrencyWithIpStack {
+public class CurrencyWithIpStackService {
 
     public InetAddress showLocalHost() throws UnknownHostException {
         InetAddress inet6Address = Inet6Address.getLocalHost();

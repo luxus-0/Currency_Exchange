@@ -14,9 +14,9 @@ import java.net.http.HttpResponse;
 @Service
 @AllArgsConstructor
 @Log4j2
-public class CurrencyConverter {
+public class CurrencyConverterService {
 
-    private final CurrencyUrl url;
+    private final CurrencyUrlService url;
 
     @Cacheable(cacheNames = "convertCurrency")
     public CurrencyConverterDto convert(String from, String to, Float amount) throws Exception {

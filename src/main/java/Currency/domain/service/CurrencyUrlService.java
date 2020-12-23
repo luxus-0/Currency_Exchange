@@ -5,14 +5,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
-public class CurrencyUrl {
+public class CurrencyUrlService {
 
-    private final CurrencyWithIpStack currencyWithIpStack;
+    private final CurrencyWithIpStackService currencyWithIpStackService;
 
     public String getUrl() { return "http://api.currencylayer.com/"; }
     public String showUrlIpStack() throws Exception
     {
-        return "https://api.ipstack.com/" + currencyWithIpStack.showIpAddress() + getKey();
+        return "https://api.ipstack.com/" + currencyWithIpStackService.showIpAddress() + getKey();
     }
     public String getUrlIpStack(String address)
     {

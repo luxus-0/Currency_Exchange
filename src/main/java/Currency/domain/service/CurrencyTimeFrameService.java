@@ -11,11 +11,11 @@ import java.util.Set;
 @Service
 @AllArgsConstructor
 @Log4j2
-public class CurrencyTimeFrame {
+public class CurrencyTimeFrameService {
 
     private final CurrencyTimeFrameCreator creator;
     private final CurrencyTimeFrameValid currencyTimeFrameValid;
-    private final CurrencyUrl url;
+    private final CurrencyUrlService url;
 
     public CurrencyTimeFrameDto getCurrencyTimeFrame(String currencies, LocalDate startDate, LocalDate endDate)
     {

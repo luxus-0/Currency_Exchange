@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 @Log4j2
-public class CurrencyNbp {
+public class CurrencyNbpService {
 
-    private final CurrencyUrl url;
+    private final CurrencyUrlService url;
     public String getCurrencyBuyingAndSell(char table)
     {
         Client nbp = Client.create();

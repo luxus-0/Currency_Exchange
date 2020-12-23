@@ -20,9 +20,9 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 @Log4j2
-public class CurrencyNbpDate {
+public class CurrencyNbpDateService {
 
-    private final CurrencyUrl url;
+    private final CurrencyUrlService url;
 
     public String getCurrencyToday(char table)
     {

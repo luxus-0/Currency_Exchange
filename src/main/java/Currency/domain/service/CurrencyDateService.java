@@ -14,9 +14,9 @@ import java.util.Set;
 @Service
 @AllArgsConstructor
 @Log4j2
-public class CurrencyDate {
+public class CurrencyDateService {
 
-    private final CurrencyUrl url;
+    private final CurrencyUrlService url;
     private final CurrencyDateCreator currencyDateCreator;
 
     @Cacheable(cacheNames = "dateCurrency")
