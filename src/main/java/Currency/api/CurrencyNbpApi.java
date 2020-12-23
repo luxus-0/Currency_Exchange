@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
+import java.net.http.HttpResponse;
 import java.time.LocalDate;
 
 @RestController
@@ -36,8 +36,7 @@ public class CurrencyNbpApi {
     }
 
     @GetMapping("/currencies/nbp/{table}/{startDate}/{endDate}")
-    public String getCurrencyDatePeriod(@PathVariable char table, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate)
-    {
+    public HttpResponse<String> getCurrencyDatePeriod(@PathVariable char table, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) throws Exception {
         return currencyNbpDate.getCurrencyDateByPeriod(table,startDate,endDate);
     }
 }
