@@ -14,7 +14,7 @@ import java.net.http.HttpResponse;
 @Service
 @AllArgsConstructor
 @Log4j2
-public class CurrencyConvert {
+public class CurrencyConverter {
 
     private final CurrencyUrl url;
 

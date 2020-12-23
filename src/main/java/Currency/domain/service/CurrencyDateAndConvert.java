@@ -17,15 +17,15 @@ public class CurrencyDateAndConvert {
 
     private final Set<LocalDate> currenciesDateDto;
     private Set<CurrencyConverterDto> currenciesConverterDto;
-    private final CurrencyConvert currencyConvert;
+    private final CurrencyConverter currencyConverter;
     private final CurrencyDateCreator dateCreator;
     private final CurrencyConverterCreator converterCreator;
 
 
     public CurrencyDateAndConvertDto getCurrencyDateWithConverter(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, String from, String to, Float amount) throws Exception {
-        currenciesConverterDto = Set.of(currencyConvert.convert(from,to,amount));
+        currenciesConverterDto = Set.of(currencyConverter.convert(from,to,amount));
         dateCreator.create(Set.of(date));
-        converterCreator.create(currencyConvert.convert(from,to,amount));
+        converterCreator.create(currencyConverter.convert(from,to,amount));
 
         currenciesDateDto.stream()
                 .filter(p -> p.getYear() > 1900)

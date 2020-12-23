@@ -18,7 +18,7 @@ public class CurrencyApi {
     private final CurrencyClient currencyClient;
     private final CurrencyScheduled currencyScheduled;
     private final CurrencyDate currencyDate;
-    private final CurrencyConvert currencyConvert;
+    private final CurrencyConverter currencyConverter;
     private final CurrencyDateAndConvert currencyDateAndConvert;
     private final CurrencyTimeFrame currencyTimeFrame;
 
@@ -49,8 +49,8 @@ public class CurrencyApi {
     }
 
     @GetMapping("/currencies/convert/{from}/{to}/{amount}")
-    public CurrencyConverterDto getCurrencyConvert(@PathVariable String from, @PathVariable String to, @PathVariable Float amount) throws Exception {
-        return currencyConvert.convert(from, to, amount);
+    public CurrencyConverterDto getCurrencyConverter(@PathVariable String from, @PathVariable String to, @PathVariable Float amount) throws Exception {
+        return currencyConverter.convert(from, to, amount);
     }
 
     @GetMapping("/currencies/timeFrame/{currencies}/{startDate}/{endDate}")
