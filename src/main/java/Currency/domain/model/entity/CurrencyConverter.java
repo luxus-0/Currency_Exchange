@@ -1,23 +1,22 @@
 package Currency.domain.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Getter
 public class CurrencyConverter {
 
-    private Long id;
-    private String from;
-    private String to;
-    private Float amount;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long idCurrency;
+    private String fromCurrency;
+    private String toCurrency;
+    private Float amountCurrency;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate createdDate;
 }
