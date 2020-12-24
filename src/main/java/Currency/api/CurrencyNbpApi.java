@@ -3,6 +3,7 @@ package Currency.api;
 import Currency.domain.service.CurrencyNbpService;
 import Currency.domain.service.CurrencyNbpDateService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,7 @@ import java.net.http.HttpResponse;
 import java.time.LocalDate;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CurrencyNbpApi {
 
     private final CurrencyNbpService currencyNbpService;

@@ -1,6 +1,6 @@
 package Currency.core.validation;
 
-import Currency.infranstructure.CurrencyLocaleService;
+import Currency.domain.service.CurrencyLocaleService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package Currency.infranstructure;
+package Currency.domain.service;
 
 import Currency.core.validation.CurrencyLocaleValid;
 import Currency.domain.client.RetrofitClient;

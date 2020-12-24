@@ -3,13 +3,14 @@ package Currency.api;
 import Currency.domain.service.CurrencyUrlService;
 import Currency.domain.service.CurrencyWithIpStackService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import java.net.InetAddress;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class GeoLocalizationApi {
 
     private final CurrencyWithIpStackService ipStack;
