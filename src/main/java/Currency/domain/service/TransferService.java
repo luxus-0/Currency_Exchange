@@ -14,18 +14,24 @@ public class TransferService {
 
     public void createTransfer(Transfer transfer)
     {
-        accountService.transferMoney(
-                transfer.getFromAccountId(),
-                transfer.getToAccountId(),
-                transfer.getAmount());
+        accountService.transferMoney
+                (
+                    transfer.getFromAccountId(),
+                    transfer.getToAccountId(),
+                    transfer.getAmount(),
+                    transfer.getRate()
+                );
 
-        repository.save(
-                Transfer.builder()
-                .amount(transfer.getAmount())
-                .currency(transfer.getCurrency())
-                .fromAccountId(transfer.getFromAccountId())
-                .toAccountId(transfer.getToAccountId())
-                .dateTransfer(transfer.getDateTransfer()
+        repository.save
+                (
+                    Transfer.builder()
+                    .amount(transfer.getAmount())
+                    .currency(transfer.getCurrency())
+                    .fromAccountId(transfer.getFromAccountId())
+                    .toAccountId(transfer.getToAccountId())
+                    .dateTransfer(transfer.getDateTransfer())
+                    .rate(transfer.getRate()
+
                 )
                 .build()
         );

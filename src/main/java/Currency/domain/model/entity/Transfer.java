@@ -23,4 +23,5 @@ public class Transfer {
     private LocalDate dateTransfer;
     private Long fromAccountId;
     private Long toAccountId;
+    private BigDecimal rate;
 }
