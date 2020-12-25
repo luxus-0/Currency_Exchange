@@ -21,9 +21,12 @@ public class Account {
     private BigDecimal balance;
     private String currency;
     private Long userId;
+    private BigDecimal rate;
 
-    public Account(BigDecimal balance, String currency) {
+    public Account(BigDecimal balance, String currency,BigDecimal rate) {
         this.balance = balance;
         this.currency = currency;
+        this.rate = rate;
+
     }
 }

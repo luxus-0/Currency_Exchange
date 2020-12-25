@@ -16,4 +16,5 @@ public class AccountRequest {
     private BigDecimal balance;
     private String currency;
     private Long userId;
+    private BigDecimal rate;
 }

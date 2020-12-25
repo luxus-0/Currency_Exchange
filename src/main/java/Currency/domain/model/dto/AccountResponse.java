@@ -15,4 +15,5 @@ public class AccountResponse {
     private BigDecimal balance;
     private String currency;
     private Long userId;
+    private BigDecimal rate;
 }
