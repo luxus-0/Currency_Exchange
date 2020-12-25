@@ -11,7 +11,7 @@ public class TransferApi {
 
     private final TransferService transferService;
 
-    @PostMapping("/api/transfer")
+    @PostMapping("api/transfer")
     public void createTransfer(@RequestBody Transfer transfer)
     {
         transferService.createTransfer(transfer);
