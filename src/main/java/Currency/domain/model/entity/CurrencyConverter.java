@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@Builder
 public class CurrencyConverter {
 
     @Id
