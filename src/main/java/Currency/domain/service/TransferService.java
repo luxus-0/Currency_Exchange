@@ -15,16 +15,16 @@ public class TransferService {
     public void createTransfer(Transfer transfer)
     {
         accountService.transferMoney(
-                transfer.getFromAccount(),
-                transfer.getToAccount(),
+                transfer.getFromAccountId(),
+                transfer.getToAccountId(),
                 transfer.getAmount());
 
         repository.save(
                 Transfer.builder()
                 .amount(transfer.getAmount())
                 .currency(transfer.getCurrency())
-                .fromAccount(transfer.getFromAccount())
-                .toAccount(transfer.getToAccount())
+                .fromAccountId(transfer.getFromAccountId())
+                .toAccountId(transfer.getToAccountId())
                 .dateTransfer(transfer.getDateTransfer()
                 )
                 .build()
