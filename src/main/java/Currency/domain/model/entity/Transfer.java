@@ -21,8 +21,6 @@ public class Transfer {
     private BigDecimal amount;
     private String currency;
     private LocalDate dateTransfer;
-    @OneToOne
-    private Account fromAccount;
-    @OneToOne
-    private Account toAccount;
+    private Long fromAccount;
+    private Long toAccount;
 }
