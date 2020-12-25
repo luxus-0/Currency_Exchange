@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @Builder
 @Data
 public class Transfer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
