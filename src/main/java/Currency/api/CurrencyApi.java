@@ -1,6 +1,6 @@
 package Currency.api;
 
-import Currency.domain.client.CurrencyClient;
+import Currency.domain.service.CurrencyClient;
 import Currency.domain.model.dto.*;
 import Currency.domain.service.*;
 import lombok.RequiredArgsConstructor;

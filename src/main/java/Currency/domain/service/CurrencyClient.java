@@ -1,4 +1,4 @@
-package Currency.domain.client;
+package Currency.domain.service;
 
 import Currency.core.exception.CurrencySourceNotFoundException;
 import Currency.domain.model.dto.CurrencyDto;
